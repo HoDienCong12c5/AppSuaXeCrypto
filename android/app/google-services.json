@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "24144431299",
+    "firebase_url": "https://bth4-d5049-default-rtdb.firebaseio.com",
+    "project_id": "bth4-d5049",
+    "storage_bucket": "bth4-d5049.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24144431299:android:e8d206e261e63517edba76",
+        "android_client_info": {
+          "package_name": "com.appsuaxecrypto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJSHuJIxTkdVzF1MEVur9UX4ny8i05MXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "24144431299-9l0pldjp2gidth923mco5reoag3ds3fd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AppSuaXeRuduxFlux"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24144431299:android:5e47331a5c1c7671edba76",
+        "android_client_info": {
+          "package_name": "com.appsuaxeruduxflux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJSHuJIxTkdVzF1MEVur9UX4ny8i05MXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "24144431299-9l0pldjp2gidth923mco5reoag3ds3fd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AppSuaXeRuduxFlux"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24144431299:android:cb6620bed6cb3f2fedba76",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJSHuJIxTkdVzF1MEVur9UX4ny8i05MXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24144431299-64dtjkbvv8t3qkunqnq2h34ul8gc2otg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "24144431299-9l0pldjp2gidth923mco5reoag3ds3fd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AppSuaXeRuduxFlux"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
