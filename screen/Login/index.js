@@ -32,13 +32,22 @@ class Login extends Base {
       tokenUser: ''
     };
   }
+  async setLocalUser( sdt, pass ) {
+    this.setState( {
+      ...this.state,
+      txtSDT: sdt,
+      txtPass: pass
 
+    } );
+  }
   async componentDidMount() { 
     if ( Platform.OS === 'android' ) { 
-       await PermissionsAndroid.request(
-         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-       );
-     }
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
+    }
+    const testPromis=await getStoreLocal( 'user' )
+    console.log( await testPromis.address );
     const { user, setUser } = this.props;
     if ( user == null ) {
       store.get( 'user' ).then( async ( res ) => {
@@ -101,7 +110,7 @@ class Login extends Base {
                 }
                 await setStoreLocal( temp );
                 await setUser( temp ); 
-               await Actions.home();
+                await Actions.home();
               } );
           }
         } );

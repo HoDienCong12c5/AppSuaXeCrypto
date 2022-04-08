@@ -23,12 +23,11 @@ export const setStoreLocal = async ( user ) => {
   await store.push( 'user', user );
 };
 export const getStoreLocal = async ( key ) => {
-  let user = null;
-  store.get( key ).then( ( res ) => {
-    user = res;
-    return res;
-  } );
-  return user;
+  return new Promise( async ( resolve, reject ) => {
+    store.get( key ).then( ( res ) => { 
+      resolve( res[0] );
+    } );
+  } ) 
 };
 export const setStoreLocalDetails = async ( type, data ) => {
   const datas = await getStoreLocal( 'user' );
@@ -190,9 +189,9 @@ export const getAllListWorker = async ( userId, xUser, yUser ) => {
             token: datas.token
           };
           list.push( temp );
-          console.log('=getlist all=====================');
-          console.log({list});
-          console.log('====================================');
+          console.log( '=getlist all=====================' );
+          console.log( {list} );
+          console.log( '====================================' );
         }
        
         return list;
