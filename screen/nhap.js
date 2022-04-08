@@ -10,15 +10,15 @@ const Nhap = () => {
     const firebase = database();
     try {
       await database()
-        .ref('/User/')
-        .once('value')
-        .then((snapshot) => {
-          console.log('User data: ', snapshot.val());
-        });
-    } catch (error) {
-      console.log('====================================');
-      console.log(error);
-      console.log('====================================');
+        .ref( '/User/' )
+        .once( 'value' )
+        .then( ( snapshot ) => {
+          console.log( 'User data: ', snapshot.val() )  ;
+        } );
+    } catch ( error ) {
+      console.log( '====================================' ) ;
+      console.log( error );
+      console.log( '====================================' );
     }
   };
   page();
