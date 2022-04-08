@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import {
-  setStoreLocal, getStoreLocal, SaveProfile, updateToken
+  setStoreLocal, getStoreLocal, getToken, updateToken
 } from 'modals/function';
 import ActionStore from 'reduxs/Action/ActionStore';
 import messaging from '@react-native-firebase/messaging';
@@ -47,7 +47,9 @@ class Login extends Base {
       );
     }
     const testPromis=await getStoreLocal( 'user' )
-    console.log( await testPromis.address );
+    console.log( await testPromis.sdt );
+    const tokenTesk = await getToken( '0392225405' )
+    console.log( await tokenTesk );
     const { user, setUser } = this.props;
     if ( user == null ) {
       store.get( 'user' ).then( async ( res ) => {

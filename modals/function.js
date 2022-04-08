@@ -152,19 +152,18 @@ export const SaveProfile = async ( idUser, type, text ) => {
   }
 };
 export const getToken = async ( sdt ) => {
-  await firestores.get()
-    .then( ( querySnapshot ) => {
-      querySnapshot.forEach( ( documentSnapshot ) => {
-        const datas = documentSnapshot.data();
-        if ( datas.sdt == sdt ) {
-          console.log( '====================================' );
-          console.log( { datas } );
-          console.log( '====================================' );
-          return datas.token;
-        }
+  return new Promise( async( success, err ) => {
+    await firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( ( documentSnapshot ) => {
+          const datas = documentSnapshot.data();
+          if ( datas.sdt == sdt ) {  
+            success( datas.token );
+          }
+        } );
       } );
-    } );
-  return null;
+    success( null );
+  } )
 };
 export const getAllListWorker = async ( userId, xUser, yUser ) => {
   const list = [];
