@@ -45,3 +45,9 @@ export const message = createReducer( initState.numberInit, {
     return action.payload;
   }
 } );
+
+export const wallet = createReducer( initState.numberInit, {
+  [KEY_PAGE.WALLET]( state, action ) {
+    return action.payload;
+  }
+} );

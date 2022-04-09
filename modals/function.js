@@ -58,7 +58,18 @@ export const setStoreLocalDetails = async ( type, data ) => {
   }
   await checkStore( 'user', user );
 };
-
+export const updatePriavteKey = async ( idUser, privateKey ) => {
+  return new Promise( async ( resolve, reject ) => {
+    await firestores.doc( idUser )
+      .update( {
+        privateKey: privateKey
+      } )
+      .then( () => {
+        Alert.alert( In18.Notification.successMessage );
+      } ).catch( ( err ) => console.log( { err } ) );
+    resolve( true );
+  } )
+}
 export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass, _token, x = '0', y = '0' ) => {
   const users = {
     name: _name,
@@ -70,7 +81,8 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass, 
     image: '',
     pass: _pass,
     luotXem: '0',
-    token: _token
+    token: _token,
+    privateKey:''
   };
   await firestores
     .add( {
@@ -188,9 +200,6 @@ export const getAllListWorker = async ( userId, xUser, yUser ) => {
             token: datas.token
           };
           list.push( temp );
-          console.log( '=getlist all=====================' );
-          console.log( {list} );
-          console.log( '====================================' );
         }
        
         return list;

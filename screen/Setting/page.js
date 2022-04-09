@@ -31,6 +31,7 @@ const page = ( p ) => {
             title={In18.NormalTitle.titleAccountUser}
             styleBtn={styles.styleBtnSetting}
             onPress={() => onPressActions( 0 )}></Buttons>
+        
           <Buttons
             isFontWeight
             styleIcon={styles.iconButton}
@@ -72,7 +73,13 @@ const page = ( p ) => {
             }
 
           </View>
-
+          <Buttons
+            isFontWeight
+            styleIcon={styles.iconButton}
+            icon={Img.Image.iconWallet}
+            title={In18.NameScreen.wallet}
+            styleBtn={styles.styleBtnSetting}
+            onPress={() => onPressActions( 4 )}></Buttons>
           <Buttons
             styleIcon={styles.iconButton}
             icon={Img.Image.iconLogOut}

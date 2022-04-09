@@ -22,6 +22,7 @@ const Colors = {
   YELLOW: '#F99D26',
   RED: '#E61A27',
   RED1: '#ED1C24',
-  ORANGE: '#FFCC66'
+  ORANGE: '#FFCC66',
+  ORANGE2:'#FFCC99'
 };
 export default Colors;

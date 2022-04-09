@@ -10,8 +10,8 @@ const styles = StyleSheet.create( {
   },
   containerQuality: {
     flexDirection: 'row',
-    width: width( 75 ),
-    height: height( 18 ),
+    // width: width( 75 ),
+    // height: height( 18 ),
     backgroundColor: '#BEDFFF',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 30,
@@ -62,10 +62,13 @@ const styles = StyleSheet.create( {
     // alignItems: 'center',
 
   },
-  containerQualityDetail: {
-    flexDirection: 'row',
-    // justifyContent:'space-between',
-    alignItems: 'center'
+  containerQualityDetail: {  
+    alignItems: 'center',
+    borderColor:Colors.YELLOW,
+    backgroundColor:Colors.ORANGE2,
+    borderRadius:10,
+    marginRight:10,
+    paddingBottom:20
   },
   callQuantity: {
     borderColor: 'red',
@@ -73,7 +76,8 @@ const styles = StyleSheet.create( {
   },
   titleQuality: {
     fontWeight: 'bold',
-    fontSize: height( 2.2 )
+    fontSize: height( 2.2 ),
+    flexWrap:'wrap'
   },
   luotXemQuality: {
     color: 'red'
@@ -96,7 +100,7 @@ const styles = StyleSheet.create( {
     backgroundColor: Colors.WHITE,
     paddingVertical: 5,
     paddingBottom: 10,
-    borderRadius: 20,
+    borderRadius: 10,
     marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: {
@@ -106,7 +110,11 @@ const styles = StyleSheet.create( {
     shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 4,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop:height( 3 ),
+    marginLeft:height( 2 ),
+    borderColor: Colors.ORANGE,
+    borderWidth:1
   },
   imgAvatarWorker: {
     height: height( 12 ),
@@ -141,6 +149,33 @@ const styles = StyleSheet.create( {
     paddingRight: 40,
     width: width( 65 ),
     backgroundColor: 'red'
+  },
+  containerImageWorker:{ 
+    top:height( -6 ),
+    padding:5
+  },
+  avatarWorker: { 
+    height: height( 8 ),
+    width: height( 8 ),
+    borderRadius: 5,
+    borderColor: Colors.YELLOW,
+    borderWidth: 1,
+    left:height( -3 ),
+    backgroundColor: Colors.ORANGE,
+    padding:5
+  },
+  avatarWorkerView: { 
+    height: height( 15 ),
+    width: height( 18 ),
+    borderColor:Colors.YELLOW,
+    backgroundColor:Colors.ORANGE2,
+    borderRadius:15
+  },
+  containerWorkerView: {
+    padding:10,
+    borderColor:Colors.YELLOW,
+    backgroundColor:Colors.ORANGE2,
+    borderRadius:10
   }
 } );
 export default styles;

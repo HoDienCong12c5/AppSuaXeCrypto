@@ -48,24 +48,22 @@ class Login extends Base {
     }
     const testPromis=await getStoreLocal( 'user' )
     console.log( await testPromis.sdt );
-    const tokenTesk = await getToken( '0392225405' )
-    console.log( await tokenTesk );
-    const { user, setUser } = this.props;
-    if ( user == null ) {
-      store.get( 'user' ).then( async ( res ) => {
-        await setUser( res[0] );
-        this.setState( {
-          txtSDT: res[0].sdt,
-          txtPass: res[0].pass
-        } );
-      } );
-    } else {
-      await setStoreLocal( user );
-      await this.setState( {
-        txtSDT: user.sdt,
-        txtPass: user.pass
-      } );
-    }
+    await this.setLocalUser(  testPromis.sdt,  testPromis.pass );
+    // if ( user == null ) {
+    //   store.get( 'user' ).then( async ( res ) => {
+    //     await setUser( res[0] );
+    //     this.setState( {
+    //       txtSDT: res[0].sdt,
+    //       txtPass: res[0].pass
+    //     } );
+    //   } );
+    // } else {
+    //   await setStoreLocal( user );
+    //   await this.setState( {
+    //     txtSDT: user.sdt,
+    //     txtPass: user.pass
+    //   } );
+    // }
   }
 
   saveLogin() {
@@ -79,15 +77,14 @@ class Login extends Base {
   }
 
   onPressLogin = async () => {
-    const { txtSDT, txtPass } = this.state;
-
+    const { txtSDT, txtPass } = this.state; 
     const { user, setUser } = this.props;
     let i = 0;
     const list = [];
     await firestores.get()
-      .then( ( querySnapshot ) => {
+      .then( ( querySnapshot ) => { 
         querySnapshot.forEach( async ( documentSnapshot ) => {
-          const datas = documentSnapshot.data();
+          const datas = documentSnapshot.data(); 
           if ( datas.sdt === txtSDT && datas.pass === txtPass ) {
             i = 1;
             messaging()
@@ -107,6 +104,7 @@ class Login extends Base {
                   token: token
                 };
                 await updateToken( documentSnapshot.id, token );
+              
                 if ( this.state.saveLogin ) {
                   await setStoreLocal( temp );
                 }

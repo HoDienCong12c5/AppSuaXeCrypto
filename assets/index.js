@@ -36,11 +36,12 @@ const Img = {
     iconEmpty: require( './images/iconEmpty.png' ),
     iconEmpty2: require( './images/iconEmptys.png' ),
     imageRegister: require( './images/imageRegister.jpg' ),
-    iconCallLive: require( './images/iconCallLive.png' ),
+    iconCallLive: require( './images/iconCallLive.png' ) ,
     iconCallWifi: require( './images/iconCallWifi.png' ),
     calenderDoing: require( './images/calenderDoing.png' ),
     statistical: require( './images/statistical.png' ),
-    iconDateEnd: require( './images/iconDateEnd.png' )
+    iconDateEnd: require( './images/iconDateEnd.png' ),
+    iconWallet: require( './images/iconWallet.png' ) 
   }
 };
 export default Img;

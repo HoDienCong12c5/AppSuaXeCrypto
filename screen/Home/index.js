@@ -31,7 +31,6 @@ class Home extends Base {
   }
 
   async componentDidMount() {
-    console.log('Start');
     await this.onWaitingNotification();
     const {
       setListWorker, setListQualityWorker, user, setUser, setListNearWorkerLimit
@@ -54,7 +53,7 @@ class Home extends Base {
       },
       ( error ) => {
         // See error code charts below.
-        console.log(' error.code', error.message );
+        console.log( ' error.code', error.message );
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );

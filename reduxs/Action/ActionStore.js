@@ -65,4 +65,13 @@ export default class StorageReduxAction {
       payload
     };
   }
+  //wallet
+  static setWallet( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.WALLET,
+      payload
+    };
+  }
+  
 }

@@ -19,7 +19,7 @@ import Home from '../screen/Home/index';
 import Search from '../screen/Search/index';
 import InfoWorker from '../screen/InfoWorker/index';
 import Calender from '../screen/Calender/index';
-
+import Wallet  from 'screen/Wallet/index';
 const scenes = ( key ) => {
   const transitionConfig = 0.5;
   return Actions.create(
@@ -41,6 +41,7 @@ const scenes = ( key ) => {
       <Scene key="calender" component={Calender} title="Tìm kiếm thợ" />
       <Scene key="calenderDoing" component={CalenderDoing} title="Tìm kiếm thợ" />
       {/* <Scene key="user" component={User} title="Tìm kiếm thợ"initial /> */}
+      <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ"  />
       <Scene key="momo" component={Momo} title="Tìm kiếm thợ" />
     </Scene>
   );

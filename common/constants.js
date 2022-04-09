@@ -14,7 +14,8 @@ export const KEY_PAGE = {
   SET_LIST_NEAR: 'SET_LIST_NEAR',
   SET_CALENDER: 'SET_CALENDER',
   SET_CALENDER_DOING: 'SET_CALENDER_DOING',
-  MESSAGE: 'MESSAGE'
+  MESSAGE: 'MESSAGE',
+  WALLET: 'WALLET'
 };
 
 export default Title = {
@@ -110,7 +111,8 @@ export default Title = {
     searchNumberPhone: 'Tìm kiếm số điện thoại',
     ggMap: 'Bản đồ',
     calenderDoing: 'Lịch hẹn đang làm',
-    statistical: 'Thống kê doanh thu'
+    statistical: 'Thống kê doanh thu',
+    historyWe3: 'Lịch sử giao dịch'
   },
   Menu: {
     HOME: 'HOME',
@@ -127,7 +129,8 @@ export default Title = {
     messageNew: 'Tin nhắn mới',
     setting: 'Cài đặt',
     infoMapWorker: 'Thông tin vị trí thợ',
-    calenderDoing: 'Lịch hẹn đang làm'
+    calenderDoing: 'Lịch hẹn đang làm',
+    wallet: 'Quản lý ví tiền'
   },
   StatusMess: {
     noRead: 'Chưa đọc',
