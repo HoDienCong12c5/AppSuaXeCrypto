@@ -68,7 +68,15 @@ const styles = StyleSheet.create( {
     backgroundColor:Colors.ORANGE2,
     borderRadius:10,
     marginRight:10,
-    paddingBottom:20
+    paddingBottom:20,
+    shadowColor: Colors.YELLOW,
+    shadowOffset: {
+      width: 2,
+      height: 2
+    },
+    shadowOpacity:1,
+    shadowRadius: 20,
+    elevation: 3
   },
   callQuantity: {
     borderColor: 'red',
@@ -96,8 +104,7 @@ const styles = StyleSheet.create( {
   // list worker
   containerWorkerDetail: {
     flexDirection: 'row',
-    // marginTop: 5,
-    backgroundColor: Colors.WHITE,
+    // marginTop: 5, 
     paddingVertical: 5,
     paddingBottom: 10,
     borderRadius: 10,
@@ -114,6 +121,7 @@ const styles = StyleSheet.create( {
     marginTop:height( 3 ),
     marginLeft:height( 2 ),
     borderColor: Colors.ORANGE,
+    backgroundColor: '#FFFFFF',
     borderWidth:1
   },
   imgAvatarWorker: {

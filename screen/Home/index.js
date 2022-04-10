@@ -46,6 +46,7 @@ class Home extends Base {
         list = await getAllListWorker( user.id, user.x, user.y );
         this.setState( { listAll: list } );
         this.setState( { listQuality: await getListWorkerQuality( list ) } );
+        console.log( 'listQuality', list );
         await setListNearWorkerLimit( await getListWorkerNearLimit( list ) );
         await setListWorker( list );
         await setListQualityWorker( await getListWorkerQuality( list ) );

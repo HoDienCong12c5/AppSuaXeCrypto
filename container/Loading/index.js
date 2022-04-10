@@ -6,12 +6,13 @@ import Colors from 'common/Colors';
 import styles from './style';
 
 const index = ( props ) => {
-  const { isOnDown = false, icon } = props;
+  const { isOnDown = false, icon , isFinish=false, isWatting=false} = props;
   const [isStop, setisStop] = useState( false );
   const isStopLoading = () => {
-    setTimeout( () => {
-      setisStop( true );
-    }, 2500 );
+    if( !isWatting )
+      setTimeout( () => {
+        setisStop( true );
+      }, 2500 );
   };
   isStopLoading();
   return (

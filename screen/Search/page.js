@@ -18,6 +18,7 @@ const page = ( p ) => {
   const { list, currentIndex, isShowMap } = p.state;
   const { onPressInfoWorker, onChangeType } = p.func;
   const { user, listWorkerNearLimit } = p.props;
+  console.log( 'listWorkerNearLimit', listWorkerNearLimit );
   const render = ( { item } ) => (
     <Items currentIndex={currentIndex} item={item} onPressInfoWorker={() => onPressInfoWorker( item )}/>
   );

@@ -11,7 +11,7 @@ import { height, width } from 'common/styles';
 import styles from './style';
 import Img from 'assets/index';
 import Buttons from '/components/Button/index';
-// import QRCode from 'react-native-qrcode-svg';
+import QRCode from 'react-native-qrcode-svg';
 const page = ( p ) => {
   const {
     onPressCreate,
@@ -22,16 +22,17 @@ const page = ( p ) => {
   const { walletUser } = p.state;
   const { wallet } = p.props;
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
+  const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
 
   return (
     <View style={styles.container} >
       <View style={styles.containerHeader}>
-        {/* <QRCode
-          value="Just some string value"
+        <QRCode
+          value={toAdd}
           logo={{uri: base64Logo}}
           logoSize={30}
           logoBackgroundColor='transparent'
-        /> */}
+        />
       </View>
       <View style={styles.containerBody}>
 

@@ -49,7 +49,7 @@ const page = ( p ) => {
         style={styles.containerWorker}
       >
         <View>
-          <View style={styles.containerWorkerDetail}>
+          <View style={styles.containerWorkerDetail} >
             <View style={styles.imgAvatarWorker}>
               <View style={styles.containerImageWorker} >
                 <Images http={image||null} url ={urlImg} style={styles.avatarWorker}  />
@@ -62,7 +62,10 @@ const page = ( p ) => {
               <Text style={[styles.textAll, styles.viewContentWorker]}>Lượt xem: {luotXem} </Text>
               <Text style={[styles.textAll, styles.addressContentWorker]}>ĐC: {address} </Text>
             </View>
-            <Image source={Img.Image.icCall} style={styles.icCallQuality} />
+            <View style={{ paddingRight:20, flexDirection:'row' , right:20}}>
+              <Image source={Img.Image.icCall} style={styles.icCallQuality} /> 
+            </View>
+
           </View> 
         </View>
        

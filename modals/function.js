@@ -115,7 +115,7 @@ export const getDistance = ( xUser = '0', yUser = '0', xWoker, yWoker ) => {
 
   const reslt = ( ( Math.sqrt( ( x1 - x2 ) ** 2 + ( y1 - y2 ) ** 2 ) ) * 100 ).toFixed( 5 );
 
-  return `${reslt} km`;
+  return reslt;
 };
 export const SaveProfile = async ( idUser, type, text ) => {
   // eslint-disable-next-line no-shadow
@@ -262,19 +262,22 @@ export const getListWorkerNear = ( list ) => {
 };
 export const getListWorkerNearLimit = ( list ) => {
   const listFinal = [];
-  for ( let i = 0; i < ( list.length - 1 ); i++ ) {
-    for ( let y = i + 1; y < ( list.length ); y++ ) {
-      if ( list[i].distance > list[y].distance ) {
-        const temps = list[i];
-        list[i] = list[y];
-        list[y] = temps;
+  return new Promise( ( success, err ) => {
+    for ( let i = 0; i < ( list.length - 1 ); i++ ) {
+      for ( let y = i + 1; y < ( list.length ); y++ ) {
+        if ( list[i].distance > list[y].distance ) {
+          const temps = list[i];
+          list[i] = list[y];
+          list[y] = temps;
+        }
+      }
+      if ( list[i].distance < 20 ) {
+        listFinal.push( list[i] );
       }
     }
-    if ( list[i].distance < 20 ) {
-      listFinal.push( list[i] );
-    }
-  }
-  return listFinal;
+    success( listFinal );
+  } )
+ 
 };
 export const getLinkImage = async ( selectedImage ) => {
   const fileName = selectedImage.substring(

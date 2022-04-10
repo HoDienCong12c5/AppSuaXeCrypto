@@ -20,7 +20,7 @@ export default function Items( p ) {
 
           {
             currentIndex === 1 ? (
-              <Text style={[styles.textAll, styles.distanceContentWorker]}>{item.distance} </Text>
+              <Text style={[styles.textAll, styles.distanceContentWorker]}>{item.distance} km </Text>
 
             ) : (
               <Text style={[styles.textAll, styles.distanceContentWorker]}>{In18.User.numberView}: {item.luotXem} </Text>
