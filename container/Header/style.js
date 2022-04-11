@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import Colors from '../../common/Colors'
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
     color: Colors.TEXT_SECONDARY,
     textAlign: 'center',
     fontSize:20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
     // padding:10
   },
   rightBTN: {
     height:20,
     width:20
-  },
-}); 
+  }
+} ); 
 export default styles

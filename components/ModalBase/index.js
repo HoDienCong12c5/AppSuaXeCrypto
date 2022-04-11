@@ -9,8 +9,9 @@ import Img from 'assets/index';
 export default function index( props ) {
   const {
     title, description, onPressSuccess, onPressClose, titleBtnSuccess, titleBtnClose,
-    noIcon = false, isBtnSuccess = true, customView = null, customViewButton = null
+    noIcon = false, isBtnSuccess = true, customView = null, customViewButton = null, isShowBtn=false
   } = props;
+  console.log( isShowBtn );
   return (
     <View style={styles.container}>
       <View style={{ alignItems: 'center' }}>
@@ -37,7 +38,7 @@ export default function index( props ) {
         }
       </View>
       {
-        customViewButton || (
+        !isShowBtn ?  customViewButton || (
           <View style={styles.containerBtn}>
             {
               isBtnSuccess ? (
@@ -47,7 +48,7 @@ export default function index( props ) {
             }
             <Button styleBtn={styles.styleBtn} title={titleBtnClose || In18.TitleBtn.close} onPress={onPressClose}></Button>
           </View>
-        )
+        ):null
       }
 
     </View>

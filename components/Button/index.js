@@ -7,7 +7,16 @@ import Image from 'components/Image';
 
 const Button = ( props ) => {
   const {
-    style, title, isDisable = false, styleText, styleBtn, icon, styleIcon, isFontWeight = false, customViewRight
+    style, 
+    title, 
+    isDisable = false, 
+    styleText, 
+    styleBtn, 
+    icon, 
+    styleIcon, 
+    isFontWeight = false, 
+    customViewRight,
+    isShowText=false
   } = props;
   return (
     <TouchableOpacity disabled={isDisable}
@@ -20,9 +29,12 @@ const Button = ( props ) => {
             <Image style={[styles.styleImage, styleIcon]} url={icon}></Image>
           ) : null
         }
-        <View style={{ alignContent: 'center', justifyContent: 'center' }}>
-          <Text style={[styles.textButton, isFontWeight && { fontWeight: 'bold' }, styleText]}>{title}</Text>
-        </View>
+        {
+          isShowText ? null : <View style={{ alignContent: 'center', justifyContent: 'center' }}>
+            <Text style={[styles.textButton, isFontWeight && { fontWeight: 'bold' }, styleText]}>{title}</Text>
+          </View>
+        }
+        
         {
           customViewRight || null
         }

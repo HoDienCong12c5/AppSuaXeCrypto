@@ -25,7 +25,8 @@ export const setStoreLocal = async ( user ) => {
 export const getStoreLocal = async ( key ) => {
   return new Promise( async ( resolve, reject ) => {
     store.get( key ).then( ( res ) => { 
-      resolve( res[0] );
+      resolve( res[0] ||null );
+      reject( null )
     } );
   } ) 
 };

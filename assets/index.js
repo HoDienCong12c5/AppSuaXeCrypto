@@ -41,7 +41,18 @@ const Img = {
     calenderDoing: require( './images/calenderDoing.png' ),
     statistical: require( './images/statistical.png' ),
     iconDateEnd: require( './images/iconDateEnd.png' ),
-    iconWallet: require( './images/iconWallet.png' ) 
+    iconWallet: require( './images/iconWallet.png' ) ,
+    messageBot: require( './images/messageBot.png' ),
+    iconMessageBot: require( './images/iconMessageBot.png' ),
+    iconCoin0: require( './images/iconCoin0.png' ),
+    iconCoin1: require( './images/iconCoin1.png' ),
+    iconCoin2: require( './images/iconCoin2.png' ),
+    iconCoin3: require( './images/iconCoin3.png' ),
+    iconCoin4: require( './images/iconCoin4.png' ),
+    iconCoin5: require( './images/iconCoin5.png' ),
+    iconCoin6: require( './images/iconCoin6.png' ),
+    iconCoin7: require( './images/iconCoin7.png' ),
+    iconQR: require( './images/iconQR.png' )
   }
 };
 export default Img;

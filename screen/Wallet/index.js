@@ -9,7 +9,8 @@ import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
 import ClassWeb3 from 'modals/ETH/web3';
-
+import QRFull from './QRFull';
+import ModalBase from 'components/ModalBase/index';
 // import firestore from '@react-native-firebase/firestore';
 class wallet extends Base {
   constructor( props ) {
@@ -17,7 +18,8 @@ class wallet extends Base {
     this.page = Page;
     this.state = {
       isLoad:false,
-      walletUser:''
+      walletUser:'',
+      amount:'0'
     }
     
   }
@@ -25,13 +27,25 @@ class wallet extends Base {
   async componentDidMount() {
     const dataWallet = await ClassWeb3.getStoreLocalWallet( 'wallet' );
     console.log( 'dataWallet', dataWallet );
+    if ( dataWallet ) {
+      this.setState( {
+        walletUser:await dataWallet.address
+      } )
+    }
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
     // console.log( 'send', send );
   }
 
   onPressCreate=async() => {
-
+    const walletNew = await ClassWeb3.newWallet();
+   
+    const {setWallet, wallet} = this.props;
+    setWallet( await walletNew );
+    console.log( 'wallet', wallet );
+    this.setState( {
+      walletUser:await walletNew.address
+    } )  
   }
   onPressSend=async( sdt, data ) => {
 
@@ -42,7 +56,15 @@ class wallet extends Base {
   onPressSubmitCheck = ( address ) => {
    
   };
-
+  onPressQRFull = () => {
+    const temp= <QRFull walletUser ={this.state.walletUser}></QRFull>
+    this.popup = <ModalBase isShowBtn customView ={temp}></ModalBase>
+    this.openModal()
+  }
+  onNexTransaction = () => {
+    console.log( 'lõi' );
+    Actions.transactionNew( {amount :100} )
+  }
   render() {
     const Template = this.view;
     return (
@@ -52,6 +74,7 @@ class wallet extends Base {
         func={this}
         state={this.state}
         showBtnBack={false}
+        noFooter
       />
     );
   }

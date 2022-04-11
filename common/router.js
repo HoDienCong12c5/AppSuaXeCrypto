@@ -20,6 +20,7 @@ import Search from '../screen/Search/index';
 import InfoWorker from '../screen/InfoWorker/index';
 import Calender from '../screen/Calender/index';
 import Wallet  from 'screen/Wallet/index';
+import TransactionPage from 'screen/Transaction/index';
 const scenes = ( key ) => {
   const transitionConfig = 0.5;
   return Actions.create(
@@ -37,6 +38,8 @@ const scenes = ( key ) => {
       <Scene key="managerMess" component={ManagerMess} title="Tìm kiếm thợ" refresh/>
       <Scene key="ggMap" component={GGMap} title="Tìm kiếm thợ" />
       <Scene key="setting" component={Setting} title="Tìm kiếm thợ" />
+      <Scene key="transactionNew" component={TransactionPage} title="Tìm kiếm thợ" />
+
       <Scene key="infoMapWorker" component={InfoMapWorker} title="Tìm kiếm thợ" />
       <Scene key="calender" component={Calender} title="Tìm kiếm thợ" />
       <Scene key="calenderDoing" component={CalenderDoing} title="Tìm kiếm thợ" />

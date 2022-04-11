@@ -7,17 +7,26 @@ import Img from '../../assets/index';
 import styles from './style';
 
 const Header = ( props ) => {
-  const { title, showBtnBack = true, isRefresh = false } = props;
+  const { title, showBtnBack = true, isRefresh = false, customView=null } = props;
   return (
     <View style={styles.container}>
       {
-        showBtnBack ? (
-          <TouchableOpacity onPress={isRefresh ? ( () => Actions.refresh() ) : ( () => Actions.pop() )}>
-            <Image source={Img.Image.icBack} style={styles.rightBTN} onPress={() => {}}/>
-          </TouchableOpacity>
-        ) : <Text/> }
-      <Text style={styles.title}>{title}</Text>
-      <Text> </Text>
+        customView?(
+          customView
+        ):(
+          <>
+            {
+              showBtnBack ? (
+                <TouchableOpacity onPress={isRefresh ? ( () => Actions.refresh() ) : ( () => Actions.pop() )}>
+                  <Image source={Img.Image.icBack} style={styles.rightBTN} onPress={() => {}}/>
+                </TouchableOpacity>
+              ) : <Text/> }
+            <Text style={styles.title}>{title}</Text>
+            <Text> </Text>
+          </>
+        )
+      }
+     
     </View>
   );
 };

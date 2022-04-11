@@ -5,59 +5,72 @@ import { width, height } from 'common/styles';
 import Colors from '../../common/Colors';
 
 const styles = StyleSheet.create( {
-  containerView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'blue',
-    padding: 200
-    // flex:1
+  container:{
+    // marginTop:20
   },
-  container: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center'
+  containerSupport:{
+    flexDirection:'row',
+    // justifyContent:'space-between',
+    // width:width( 90 ),
+    alignItems:'center',
+    // borderBottomWidth:1,
+    // borderColor:Colors.ORANGE,
+    paddingBottom:10
   },
-  containerBuild: {
-    width: width( 90 ),
-    marginTop: 10
+  supportChain:{
+    fontSize: height( 3 ),
+    fontWeight: 'bold',
+    marginTop:20,
+    marginBottom:10
   },
-  styleBtnSetting: {
-    width: width( 90 ),
-    borderWidth: 0,
-    borderBottomWidth: 1.5,
-    borderBottomColor: 'gainsboro',
-    justifyContent: 'flex-start',
-    paddingLeft: 0,
-    marginTop: 20,
-    paddingBottom: 20,
-    height: height( 9 ),
-    borderRadius: 0
+  iconEthereum:{
+    height:height( 3.5 ),
+    width:height( 3.5 )
   },
-  iconButton: {
-    height: height( 8 ),
-    width: height( 8 )
+  ethereum:{
+    fontSize: height( 2.5 )
   },
-  containerCalender: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingBottom: 20,
-    borderBottomWidth: 1.5,
-    borderBottomColor: 'gainsboro'
-
+  containerAddress:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:width( 90 ),
+    alignItems:'center',
+    borderBottomWidth:1,
+    borderColor:Colors.ORANGE,
+    paddingBottom:20,
+    marginTop:10
   },
-  styleBtnCalender: {
-    borderWidth: 0,
-    justifyContent: 'flex-start',
-    paddingLeft: 0,
-    marginTop: 20,
-    width: width( 80 )
+  address:{
+    fontSize: height( 3 ),
+    fontWeight: 'bold',
+    marginVertical:10
   },
-  numberCalender: {
-    backgroundColor: Colors.YELLOW,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    alignItems: 'center',
-    borderRadius: 40
+  btnNewAddress:{
+    borderWidth:0,
+    paddingHorizontal:0,
+    margin:0,
+    height:'auto',
+    width:'auto'
+  },
+  textBtnNewAddress:{
+    padding:0,
+    color:Colors.RED,
+    fontWeight:'bold'
+  },
+  containerPlatform:{
+    flexDirection:'row',
+    borderBottomWidth:1,
+    borderColor:Colors.ORANGE
+  },
+  containerNewTransaction:{
+    marginTop:height( 3 )
+  },
+  btnNewTransaction:{
+    backgroundColor:Colors.ORANGE,
+    width:width( 20 ),
+    paddingHorizontal:0,
+    padding:0
   }
+
 } );
 export default styles;

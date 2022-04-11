@@ -136,6 +136,7 @@ android {
           resolutionStrategy { force 'androidx.work:work-runtime:2.6.0' }
         }
         applicationId "com.appsuaxecrypto"
+        missingDimensionStrategy 'react-native-camera', 'general'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -205,6 +206,7 @@ dependencies {
        exclude group: 'com.google.android.gms', module: 'play-services-base'
        exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
+    implementation project(':react-native-camera')
     implementation project(path: ":@react-native-firebase_auth")
     implementation 'com.google.android.gms:play-services-base:17.2.1'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'

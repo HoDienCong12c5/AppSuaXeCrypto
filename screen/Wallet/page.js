@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet, Image, Text, ScrollView
+  View, StyleSheet, Text, ScrollView
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
@@ -10,31 +10,87 @@ import TextInput from 'components/TextInput/index';
 import { height, width } from 'common/styles';
 import styles from './style';
 import Img from 'assets/index';
-import Buttons from '/components/Button/index';
+import Button from 'components/Button/index';
 import QRCode from 'react-native-qrcode-svg';
+import Image from 'components/Image/index';  
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const page = ( p ) => {
   const {
     onPressCreate,
     onPressSend,
     onPressScan,
-    onPressSubmitCheck
+    onPressSubmitCheck,
+    onPressQRFull,
+    onNexTransaction
   } = p.func;
-  const { walletUser } = p.state;
-  const { wallet } = p.props;
+  const { walletUser, amount } = p.state; 
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
-
+  const listBtn=[
+  
+  ]
   return (
     <View style={styles.container} >
       <View style={styles.containerHeader}>
-        <QRCode
-          value={toAdd}
-          logo={{uri: base64Logo}}
-          logoSize={30}
-          logoBackgroundColor='transparent'
-        />
+        <View style={styles.containerPlatform}>
+          <View style={{flex:7}}>
+            <Text style={styles.supportChain}>Nền tảng </Text>
+            <View style={[styles.containerSupport,{borderBottomWidth:0}]}>
+              <Text style={styles.ethereum}>Ethereum : </Text>
+              <Image url={Img.Image.iconCoin0} style={styles.iconEthereum}/>
+            </View>
+            <View style={styles.containerSupport}>
+              <Text style={styles.amount}>{In18.web3.amount}: {amount} ETH </Text>
+            </View>
+          </View>
+          <View style={styles.containerNewTransaction}>
+            <Button 
+              onPress={()=>onNexTransaction()}
+              title={In18.web3.newTransaction}
+              styleBtn={[styles.btnNewTransaction]}
+            /> 
+          </View>
+        </View>
+        
+        <View style={styles.containerAddress}>
+          <View  style={{flex: 7.5}}>
+            <Text style={styles.address}>Địa chỉ ví </Text>
+            <View style={{ flexDirection:'row', alignItems:'center', display:'flex'}}>
+              <View >
+                <Text style={styles.textHeader}>{walletUser ||'Chưa có ->' } </Text>
+
+              </View>
+              {
+                !walletUser ? (
+                  <Button 
+                    onPress={onPressCreate}
+                    title='Tạo mới ví' 
+                    style={styles.btnNewAddress}  
+                    styleBtn={styles.btnNewAddress} 
+                    styleText={styles.textBtnNewAddress} 
+                  />
+                ):null
+              }
+            </View>
+          </View>
+          <View style={{flex:2.5, alignItems:'flex-end'}}>
+            <TouchableOpacity onPress={onPressQRFull}>
+              <QRCode
+                value={toAdd}
+                logo={{uri: base64Logo}}
+                size={height( 8 )}
+                logoBackgroundColor='transparent'
+              />
+
+            </TouchableOpacity>
+          
+          </View>
+         
+        </View>
+       
       </View>
-      <View style={styles.containerBody}>
+      <View style={styles.containerHistory}>
+        <Text style={styles.supportChain}>Lịch sử giao dịch </Text>
 
       </View>
     </View>

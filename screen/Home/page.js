@@ -138,6 +138,10 @@ const page = ( p ) => {
           </FlatList>
         </View>
       </ScrollView>
+      <TouchableOpacity>
+        <Image source={Img.Image.iconMessageBot} style={styles.messageBot} />
+        
+      </TouchableOpacity>
     </View>
 
   );

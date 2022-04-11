@@ -139,6 +139,15 @@ export default Title = {
     read: 'Đã đọc',
     new: 'Tin mới',
     newBuild: 'Thành lập hóa đơn'
+  },
+  web3:{
+    newTransaction:'Tạo giao dịch',
+    historyTransaction:'Lịch sử giao dịch',
+    newWallet:'Tạo ví',
+    send:'Gửi tiền',
+    receive:'Nhận tiền',
+    amount:'Số Token (coin)',
+    toAddress:'Địa chỉ nhận'
   }
 };
 export const chainType = {

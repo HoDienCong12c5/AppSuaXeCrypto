@@ -86,6 +86,7 @@ class Login extends Base {
       .then( ( querySnapshot ) => { 
         querySnapshot.forEach( async ( documentSnapshot ) => {
           const datas = documentSnapshot.data(); 
+          console.log( 'datas', datas );
           if ( datas.sdt === txtSDT && datas.pass === txtPass ) {
             i = 1;
             messaging()
@@ -104,6 +105,7 @@ class Login extends Base {
                   checkWorker: datas.checkWorker,
                   token: token
                 };
+                console.log( temp );
                 await updateToken( documentSnapshot.id, token );
               
                 if ( this.state.saveLogin ) {
@@ -116,6 +118,7 @@ class Login extends Base {
           }
         } );
         if ( i === 0 ) {
+          console.log( 'erro' );
           Alert.alert( In18.Error.noLogin );
         }
       } );

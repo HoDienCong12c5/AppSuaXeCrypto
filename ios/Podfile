@@ -20,6 +20,8 @@ target 'AppSuaXeCrypto' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
   target 'AppSuaXeCryptoTests' do
     inherit! :complete
     # Pods for testing

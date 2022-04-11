@@ -184,6 +184,14 @@ const styles = StyleSheet.create( {
     borderColor:Colors.YELLOW,
     backgroundColor:Colors.ORANGE2,
     borderRadius:10
+  },
+  messageBot:{
+    position:'absolute',
+    height:height( 8 ),
+    width:height( 8 ),
+    top:height( -10 ),
+    right:0
+
   }
 } );
 export default styles;

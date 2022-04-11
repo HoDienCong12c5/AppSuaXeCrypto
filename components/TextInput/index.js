@@ -13,11 +13,11 @@ const height = ( num ) => PixelRatio.roundToNearestPixel( MYHEIGHT * ( num / 100
 
 const TextInputs = ( props ) => {
   const {
-    type = null, placeholder, isDisable = false, style, icon, styleImg, styleInput, password = false, noIcon = false, numberOfLines = 0
+    type = null, placeholder, styleAll, style, icon, styleImg, styleInput, password = false, noIcon = false, numberOfLines = 0
   } = props;
   const imgAvatar = !icon ? image.Image.icProfile : icon;
   return (
-    <View style={styles.all}>
+    <View style={[styles.all, styleAll]}>
       <View style={[styles.sectionStyle, style]}>
         {
           !noIcon ? (
