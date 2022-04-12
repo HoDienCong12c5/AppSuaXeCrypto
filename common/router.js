@@ -37,7 +37,7 @@ const scenes = ( key ) => {
       <Scene key="messPage" component={MessPage} title="Tìm kiếm thợ" />
       <Scene key="managerMess" component={ManagerMess} title="Tìm kiếm thợ" refresh/>
       <Scene key="ggMap" component={GGMap} title="Tìm kiếm thợ" />
-      <Scene key="setting" component={Setting} title="Tìm kiếm thợ" />
+      <Scene key="setting" component={Setting} title="Tìm kiếm thợ" initial/>
       <Scene key="transactionNew" component={TransactionPage} title="Tìm kiếm thợ" />
 
       <Scene key="infoMapWorker" component={InfoMapWorker} title="Tìm kiếm thợ" />

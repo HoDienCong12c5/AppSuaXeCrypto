@@ -22,11 +22,20 @@ class Setting extends Base {
   }
 
   async componentDidMount() {
+    const callBackAfterSendDone = ( hash ) => {
+      console.log( 'callBackAfterSendDone', hash );
+    }
     const dataWallet = await ClassWeb3.getStoreLocalWallet( 'wallet' );
     console.log( 'dataWallet', dataWallet );
     const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
-    // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
-    // console.log( 'send', send );
+    const toAdd = '0xb2f92112cff116e589900e4622b9d1265284665d';
+    console.log( 'toAdd', toAdd );
+    // await ClassWeb3.newTransaction( privateKey, { to: toAdd, value: 0.0001, isContract: false, contractToken: '', decimal: 18 }, false, callBackAfterSendDone ).then( ( tx ) => {
+    //   console.log( 'tx', tx );
+    // } )
+    console.log( 'start' );
+    const send = await ClassWeb3.sendTransaction( dataWallet, toAdd, 1000000000000 );
+    console.log( 'send', send );
 
 
     const { user, calender, setCalender } = this.props;
