@@ -27,26 +27,31 @@ class Setting extends Base {
     }
     const dataWallet = await ClassWeb3.getStoreLocalWallet( 'wallet' );
     console.log( 'dataWallet', dataWallet );
-    const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
+    // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
+    const privateKey = "31fb9d5fbd1f6503027d99cc8e10a845df45d6401232434b78354035381d940f";
+    
     const toAdd = '0xb2f92112cff116e589900e4622b9d1265284665d';
     console.log( 'toAdd', toAdd );
     // await ClassWeb3.newTransaction( privateKey, { to: toAdd, value: 0.0001, isContract: false, contractToken: '', decimal: 18 }, false, callBackAfterSendDone ).then( ( tx ) => {
     //   console.log( 'tx', tx );
     // } )
     console.log( 'start' );
-    const send = await ClassWeb3.sendTransaction( dataWallet, toAdd, 1000000000000 );
-    console.log( 'send', send );
+    // const send = await ClassWeb3.newWallet()
+    // console.log( 'ClassWeb3.sendTransaction', send );
+    // const send = await ClassWeb3.sendNew( privateKey, toAdd, '10000000000000' ).then( console.log );
+    const send = await ClassWeb3.sendTransaction( privateKey, toAdd, '1000000000000000' );
+    console.log( 'ClassWeb3.sendTransaction', send );
 
 
     const { user, calender, setCalender } = this.props;
-    const list = await getLisBill( user.sdt );
-    let count = 0;
-    list.map( ( item ) => {
-      if ( item.status == 0 ) {
-        count++;
-      }
-    } );
-    setCalender( count );
+    // const list = await getLisBill( user.sdt );
+    // let count = 0;
+    // list.map( ( item ) => {
+    //   if ( item.status == 0 ) {
+    //     count++;
+    //   }
+    // } );
+    // setCalender( count );
   }
 
   onPressLogOut=() => {

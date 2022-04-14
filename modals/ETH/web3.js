@@ -2,11 +2,12 @@
 const API_URL = 'https://kovan.infura.io/v3/e4c6b2743e544bdb910ef53155687b0f';
 const Web3 = require( 'web3' );
 const web3 = new Web3( new Web3.providers.HttpProvider( API_URL ) );
-const toAdd = '0xb2f92112cff116e589900e4622b9d1265284665d';
 import bigdecimal from 'bigdecimal'
 import store from 'react-native-simple-store';
 import converter from 'hex2dec'
 var Tx = require( '@ethereumjs/tx' ).Transaction;
+import { ethers } from 'ethers'
+let web3Provider = new ethers.providers.Web3Provider( web3.currentProvider )
 
 const newWallet = async () => {
   // new add in web3
@@ -32,27 +33,101 @@ const generateWallet  = async () => {
     resolve( wallet );
   } );
 }
-//sendTrancstion
-const sendTransaction = async ( wallet, toAdd, value ) => {
-  console.log( 'vo' );
+//send new 
+const sendNew= async ( privateKey, fromAdd, value )=>{
+  console.log( 'fromAdd', fromAdd );
+  const nonce = await web3.eth.getTransactionCount( fromAdd );
+
+  const gasPrice = await web3.eth.getGasPrice();
+ 
   return new Promise( async ( resolve, reject ) => {
-    web3.eth.sendTransaction( {
-      from: toAdd,
-      to: toAdd,
-      value:value
-    } ) .on( 'transactionHash', function ( hash ) {
-      console.log( 'transactionHash' )
-      console.log( hash )
-      resolve( hash )
-    } )
+    var rawTx = {
+      nonce: nonce,
+      gasPrice: gasPrice,
+      gasLimit: '21000',
+      to: fromAdd,
+      value: value ,
+      data:'0x'
+    } 
+    sendTransaction2( privateKey, rawTx ).then( ( data )=>{
+      resolve( data )
+    }
+    )
+  } )
+
+}
+//new send2
+const sendTransaction2 = async ( privateKey, item ) => {
+  const { to, gasPrice, value, gasLimit, data } = item;
+  return new Promise( async ( resolve, reject ) => {
+    const hmyMasterAccount = web3.eth.accounts.privateKeyToAccount( privateKey.replace( '0x', '' ) )
+    // web3.eth.accounts.wallet.add( hmyMasterAccount )
+    web3.eth.defaultAccount = hmyMasterAccount.address
+    const myAddress = web3.eth.defaultAccount
+    const from = web3.eth.defaultAccount
+    console.log( 'myAddress',myAddress )
+    // resolve( myAddress )
+    web3.eth.sendTransaction( {from,to , gasPrice, gasLimit, data,  value } )
+      .on( 'transactionHash', function ( hash ) {
+        console.log( 'transactionHash' )
+        console.log( hash ) 
+        resolve( hash ) 
+      } )
       .on( 'receipt', function ( receipt ) {
         console.log( 'receipt' )
-        console.log( receipt )
-        resolve( receipt.transactionHash )
+        console.log( receipt ) 
+        resolve( receipt )
+        // ReduxService.clearTrackingTxs(receipt.transactionHash)
       } )
       .on( 'error', ( err ) => {
         reject( err )
       } )
+
+  } )
+}
+//sendTrancstion
+const sendTransaction = async ( privateKey, toAdd, value ) => {
+  console.log( 'vo' );
+  var Tx = require( '@ethereumjs/tx' ).Transaction;
+  console.log( 'wallet', privateKey );
+  var privateKeyNew = Buffer.from( privateKey, 'hex' );
+  console.log( 'privateKeyNew', privateKeyNew );
+  //get nonce
+  const nonce = await web3.eth.getTransactionCount( toAdd )+1;
+  console.log( 'nonce', nonce );
+  //get gasPrice 
+  const gasPrice = await web3.eth.getGasPrice();
+  console.log( 'gasPrice', gasPrice );
+  //get gasLimit
+  // const gasLimit = await web3.eth.getGasLimit();
+  var rawTx =await {
+    nonce: web3.utils.utf8ToHex( nonce ),
+    gasPrice: web3.utils.utf8ToHex( gasPrice ),
+    gasLimit: "0x05710",
+    to: toAdd,
+    value: '0x00'
+  } 
+  return await new Promise( async ( resolve, reject ) => {
+    const ethWallet = new ethers.Wallet( privateKey, web3Provider ) 
+    const signedTransaction = await ethWallet.signTransaction( rawTx )
+    console.log( 'signedTransaction', signedTransaction );
+    web3.eth.sendSignedTransaction( signedTransaction, ( error, result ) => {
+      if ( error ) {
+        console.log( 'error', error );
+        reject( error );
+      } else {
+        console.log( 'result', result );
+        resolve( result );
+      }
+    } )
+    // await web3.eth.sendSignedTransaction( '0x' + serializedTx.toString( 'hex' ) ).on( 'receipt', function ( receipt ) {
+    //   console.log( 'receipt' )
+    //   console.log( receipt )
+    //   resolve( receipt.transactionHash )
+    // } )
+    //   .on( 'error', ( err ) => {
+    //     reject( err )
+    //   } )
   } );
 }
 const getStoreLocalWallet = async ( key ) => {
@@ -122,11 +197,11 @@ const newTransaction=( privateKey, payload, isWaitDone = false, callback )=>{
     console.log( 'error', error );
   }
 }
-const getDataHistory (path, queryBody) {
-  return postGateWay(path, REQUEST_TYPE.GET, undefined, queryBody)
+const getDataHistory= ( path, queryBody ) =>{
+  return postGateWay( path, REQUEST_TYPE.GET, undefined, queryBody )
 }
-const postGateWay (url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCustom = 5000, customAuth = null, isCustomLink = false) {
-  const callApi = new Promise(async (resolve, reject) => {
+const postGateWay= ( url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCustom = 5000, customAuth = null, isCustomLink = false )=> {
+  const callApi = new Promise( async ( resolve, reject ) => {
     try {
       const userToken = ReduxService.getUserToken()
       const token = customAuth || userToken
@@ -138,44 +213,45 @@ const postGateWay (url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCusto
           Authorization: token ? 'Bearer ' + token : ''
         }
       }
-      if (body) {
-        params.body = JSON.stringify(body)
+      if ( body ) {
+        params.body = JSON.stringify( body )
       }
       let queryStr = ''
-      if (queryBody) {
-        queryStr = '?' + QueryString.stringify(queryBody)
+      if ( queryBody ) {
+        queryStr = '?' + QueryString.stringify( queryBody )
       }
 
-      const response = await fetch((isCustomLink ? '' : (settings().server.api)) + url + queryStr, params)
+      const response = await fetch( ( isCustomLink ? '' : ( settings().server.api ) ) + url + queryStr, params )
       const responJson = await response.json()
-      if (response.status === 200) {
-        resolve(responJson)
+      if ( response.status === 200 ) {
+        resolve( responJson )
       }
-      resolve(null)
-    } catch (error) {
-      reject(error)
+      resolve( null )
+    } catch ( error ) {
+      reject( error )
     }
-  })
+  } )
   // Close promise if over time
-  const callRemove = new Promise(function (resolve, reject) {
-    setTimeout(() => {
-      return reject(errOverTime)
-    }, timeOutCustom)
-  })
+  const callRemove = new Promise( function ( resolve, reject ) {
+    setTimeout( () => {
+      // return reject( errOverTime )
+    }, timeOutCustom )
+  } )
 
-  return Promise.race([callApi, callRemove]).then((result) => {
+  return Promise.race( [callApi, callRemove] ).then( ( result ) => {
     return result
-  }).catch((e) => {
-    if (e === 'OverTime') {
+  } ).catch( ( e ) => {
+    if ( e === 'OverTime' ) {
       // EventRegister.emit('internetChange', I18n.t('Initial.connectErr'))
     }
     return null
-  })
+  } )
 }
 export default {
   newWallet,
   sendTransaction,
   getStoreLocalWallet,
   newTransaction,
-  getDataHistory
+  getDataHistory,
+  sendNew
 }
