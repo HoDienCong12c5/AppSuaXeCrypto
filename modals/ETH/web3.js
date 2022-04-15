@@ -76,8 +76,7 @@ const sendTransaction2 = async ( privateKey, item ) => {
       .on( 'receipt', function ( receipt ) {
         console.log( 'receipt' )
         console.log( receipt ) 
-        resolve( receipt )
-        // ReduxService.clearTrackingTxs(receipt.transactionHash)
+        resolve( receipt ) 
       } )
       .on( 'error', ( err ) => {
         reject( err )
