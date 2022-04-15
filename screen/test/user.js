@@ -20,6 +20,10 @@ export default function user () {
     </View>
   );
 }
+/// important
+// const add = '0xb2f92112cff116e589900e4622b9d1265284665d';
+// const privatekey = '31fb9d5fbd1f6503027d99cc8e10a845df45d6401232434b78354035381d940f';
+/// important
 // const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
 // const privateKeyCty='2cd2840037fcce1017d8ac8f396b0deb19594c010a6a818dab76ea1e37d7c8bf'
 // const privatekey = 'c77e6040bd37d4d2beac9399284372ece39d747253c99b423daa3a5aa2d805ff';
@@ -103,6 +107,5 @@ export default function user () {
 //     </View>
 //   );
 // }
-// const add = '0xb2f92112cff116e589900e4622b9d1265284665d';
-// const privatekey = '31fb9d5fbd1f6503027d99cc8e10a845df45d6401232434b78354035381d940f';
+
 // const data = { data: [49, 251, 157, 95, 189, 31, 101, 3, 2, 125, 153, 204, 142, 16, 168, 69, 223, 69, 214, 64, 18, 50, 67, 75, 120, 53, 64, 53, 56, 29, 148, 15], type: 'Buffer' };
