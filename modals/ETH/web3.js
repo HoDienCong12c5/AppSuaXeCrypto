@@ -86,48 +86,71 @@ const sendTransaction2 = async ( privateKey, item ) => {
 }
 //sendTrancstion
 const sendTransaction = async ( privateKey, toAdd, value ) => {
-  console.log( 'vo' );
-  var Tx = require( '@ethereumjs/tx' ).Transaction;
-  console.log( 'wallet', privateKey );
-  var privateKeyNew = Buffer.from( privateKey, 'hex' );
-  console.log( 'privateKeyNew', privateKeyNew );
-  //get nonce
-  const nonce = await web3.eth.getTransactionCount( toAdd )+1;
-  console.log( 'nonce', nonce );
-  //get gasPrice 
-  const gasPrice = await web3.eth.getGasPrice();
-  console.log( 'gasPrice', gasPrice );
-  //get gasLimit
-  // const gasLimit = await web3.eth.getGasLimit();
-  var rawTx =await {
-    nonce: web3.utils.utf8ToHex( nonce ),
-    gasPrice: web3.utils.utf8ToHex( gasPrice ),
-    gasLimit: "0x05710",
-    to: toAdd,
-    value: '0x00'
+
+  // const hmyMasterAccount = web3.eth.accounts.privateKeyToAccount( privateKey.replace( '0x', '' ) )
+  // // web3.eth.accounts.wallet.add( hmyMasterAccount )
+  // web3.eth.defaultAccount = hmyMasterAccount.address
+
+  value=convertBalanceToWei( value )
+  console.log( 'vo' );   
+  const to = toAdd
+  const from = toAdd
+  const ethWallet = new ethers.Wallet( privateKey, web3Provider )  
+
+  const nonce = await web3.utils.utf8ToHex( '2' );
+  console.log(  await web3.eth.getTransactionCount( toAdd )+1 );   
+  const gasPrice =await  web3.utils.utf8ToHex( await web3.eth.getGasPrice() );
+
+  var rawTx = {
+    gasPrice,
+    to,
+    from,
+    value
   } 
-  return await new Promise( async ( resolve, reject ) => {
-    const ethWallet = new ethers.Wallet( privateKey, web3Provider ) 
-    const signedTransaction = await ethWallet.signTransaction( rawTx )
-    console.log( 'signedTransaction', signedTransaction );
-    web3.eth.sendSignedTransaction( signedTransaction, ( error, result ) => {
-      if ( error ) {
-        console.log( 'error', error );
-        reject( error );
-      } else {
-        console.log( 'result', result );
-        resolve( result );
+  
+  return await new Promise(  ( resolve, reject ) => {
+    resolve( estimateGasTxs( rawTx ).then( async ( gas ) => {
+      console.log( 'gas', gas );
+      const gasLimit = gas;
+      console.log( 'rawTx', rawTx );  
+      const temp ={
+        nonce,
+        from,
+        to,
+        gasPrice,
+        gasLimit
       }
+      console.log( 'temp1', temp );
+      const signedTransaction = await ethWallet.signTransaction( temp )
+      console.log( 'temp2', signedTransaction );
+      web3.eth.sendSignedTransaction( signedTransaction, ( error, result ) => {
+        console.log( 'start send ' );
+        if ( error ) {
+          console.log( 'error', error );
+          reject( error );
+        } else {
+          console.log( 'result', result );
+          resolve( result );
+        }
+      } ) 
+    
+    } ).catch( ( err ) => {
+     
+      reject( err )
     } )
-    // await web3.eth.sendSignedTransaction( '0x' + serializedTx.toString( 'hex' ) ).on( 'receipt', function ( receipt ) {
-    //   console.log( 'receipt' )
-    //   console.log( receipt )
-    //   resolve( receipt.transactionHash )
-    // } )
-    //   .on( 'error', ( err ) => {
-    //     reject( err )
-    //   } )
+    )
   } );
+}
+const estimateGasTxs=async ( rawTransaction ) =>{
+  return new Promise(  ( resolve, reject ) => {
+    web3.eth.estimateGas( rawTransaction ).then( res => {
+     
+      resolve( res )
+    } ).catch( ( err ) => {
+      console.log( 'Gas estimate error: ' + err )
+      reject( err )
+    } )
+  } )
 }
 const getStoreLocalWallet = async ( key ) => {
   return new Promise( async ( resolve, reject ) => {
