@@ -33,63 +33,13 @@ const generateWallet  = async () => {
     resolve( wallet );
   } );
 }
-//send new 
-const sendNew= async ( privateKey, fromAdd, value )=>{
-  console.log( 'fromAdd', fromAdd );
-  const nonce = await web3.eth.getTransactionCount( fromAdd );
 
-  const gasPrice = await web3.eth.getGasPrice();
- 
-  return new Promise( async ( resolve, reject ) => {
-    var rawTx = {
-      nonce: nonce,
-      gasPrice: gasPrice,
-      gasLimit: '21000',
-      to: fromAdd,
-      value: value ,
-      data:'0x'
-    } 
-    sendTransaction2( privateKey, rawTx ).then( ( data )=>{
-      resolve( data )
-    }
-    )
-  } )
-
-}
 //new send2
-const sendTransaction2 = async ( privateKey, item ) => {
-  const { to, gasPrice, value, gasLimit, data } = item;
-  return new Promise( async ( resolve, reject ) => {
-    const hmyMasterAccount = web3.eth.accounts.privateKeyToAccount( privateKey.replace( '0x', '' ) )
-    // web3.eth.accounts.wallet.add( hmyMasterAccount )
-    web3.eth.defaultAccount = hmyMasterAccount.address
-    const myAddress = web3.eth.defaultAccount
-    const from = web3.eth.defaultAccount
-    console.log( 'myAddress',myAddress )
-    // resolve( myAddress )
-    web3.eth.sendTransaction( {from,to , gasPrice, gasLimit, data,  value } )
-      .on( 'transactionHash', function ( hash ) {
-        console.log( 'transactionHash' )
-        console.log( hash ) 
-        resolve( hash ) 
-      } )
-      .on( 'receipt', function ( receipt ) {
-        console.log( 'receipt' )
-        console.log( receipt ) 
-        resolve( receipt ) 
-      } )
-      .on( 'error', ( err ) => {
-        reject( err )
-      } )
 
-  } )
-}
 //sendTrancstion
 const sendTransaction = async ( privateKey, toAdd, value ) => {
-
-  // const hmyMasterAccount = web3.eth.accounts.privateKeyToAccount( privateKey.replace( '0x', '' ) )
-  // // web3.eth.accounts.wallet.add( hmyMasterAccount )
-  // web3.eth.defaultAccount = hmyMasterAccount.address
+ 
+  web3.eth.defaultAccount = toAdd
 
   value=convertBalanceToWei( value )
   console.log( 'vo' );   
