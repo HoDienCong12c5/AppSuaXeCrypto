@@ -8,7 +8,7 @@ import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
-// import ClassWeb3 from 'modals/ETH/web3';
+import ClassWeb3 from 'modals/ETH/web3';
 import SetupETH from 'modals/ETH/setupETH'
 
 // import firestore from '@react-native-firebase/firestore';
@@ -30,13 +30,9 @@ class Setting extends Base {
     // console.log( 'dataWallet', dataWallet );
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
 
-    console.log( 'toAdd', toAdd );
-    console.log( 'start' );
     // const send = await ClassWeb3.newWallet()
     // console.log( 'ClassWeb3.sendTransaction', send ); 
-    await SetupETH.sendNew( privateKey, toAdd,0 )
-
-
+    // await ClassWeb3.newTransaction( privateKey, toAdd,0.00001 )
     const { user, calender, setCalender } = this.props;
     // const list = await getLisBill( user.sdt );
     // let count = 0;

@@ -13,7 +13,7 @@ let web3Provider = new ethers.providers.Web3Provider( web3.currentProvider )
 const sendNew= async ( privateKey, to, value )=>{
   await web3.eth.accounts.privateKeyToAccount( '0x'+privateKey );
   const ethWallet = new  ethers.Wallet( privateKey, web3Provider )  
-  await web3.eth.accounts.wallet.add( '0x'+privateKey );
+  // await web3.eth.accounts.wallet.add( '0x'+privateKey );
   const wl= await web3.eth.accounts.wallet;
   console.log( 'wl',await wl );
   const tran = await  web3.eth.accounts.sign( '', '0x'+privateKey )
