@@ -10,7 +10,6 @@ import In18 from '../../common/constants';
 import Page from './page'; 
 import ClassWeb3 from 'modals/ETH/web3';
 import SetupETH from 'modals/ETH/setupETH'
-import ClassTOMO from 'modals/TOMO/web3';
 
 // import firestore from '@react-native-firebase/firestore';
 const privateKey = "31fb9d5fbd1f6503027d99cc8e10a845df45d6401232434b78354035381d940f";
@@ -33,8 +32,7 @@ class Setting extends Base {
 
     // const send = await ClassWeb3.newWallet()
     // console.log( 'ClassWeb3.sendTransaction', send ); 
-    // await ClassTOMO.sendTransaction( privateKey, toAdd,0.01 )
-    await ClassTOMO.getHistory( toAdd )
+    // await ClassWeb3.sendTransaction( privateKey, toAdd,0.00001 )
     const { user, calender, setCalender } = this.props;
     // const list = await getLisBill( user.sdt );
     // let count = 0;

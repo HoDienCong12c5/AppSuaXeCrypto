@@ -37,14 +37,14 @@ const scenes = ( key ) => {
       <Scene key="messPage" component={MessPage} title="Tìm kiếm thợ" />
       <Scene key="managerMess" component={ManagerMess} title="Tìm kiếm thợ" refresh/>
       <Scene key="ggMap" component={GGMap} title="Tìm kiếm thợ" />
-      <Scene key="setting" component={Setting} title="Tìm kiếm thợ" initial/>
+      <Scene key="setting" component={Setting} title="Tìm kiếm thợ" />
       <Scene key="transactionNew" component={TransactionPage} title="Tìm kiếm thợ" />
 
       <Scene key="infoMapWorker" component={InfoMapWorker} title="Tìm kiếm thợ" />
       <Scene key="calender" component={Calender} title="Tìm kiếm thợ" />
       <Scene key="calenderDoing" component={CalenderDoing} title="Tìm kiếm thợ" />
       {/* <Scene key="user" component={User} title="Tìm kiếm thợ"initial /> */}
-      <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ"  />
+      <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ" initial />
       <Scene key="momo" component={Momo} title="Tìm kiếm thợ" />
     </Scene>
   );

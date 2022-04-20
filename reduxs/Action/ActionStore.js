@@ -73,5 +73,12 @@ export default class StorageReduxAction {
       payload
     };
   }
+  static setToken( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.TOKEN,
+      payload
+    };
+  }
   
 }

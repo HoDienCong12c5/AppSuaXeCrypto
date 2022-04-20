@@ -19,12 +19,18 @@ class wallet extends Base {
     this.state = {
       isLoad:false,
       walletUser:'',
-      amount:'0'
+      amount:'0',
+      isETH:true
     }
     
   }
 
   async componentDidMount() {
+    const {token} = this.props;
+    this.setState( {
+      isETH:token
+    } );
+    console.log( 'token', token );
     const dataWallet = await ClassWeb3.getStoreLocalWallet( 'wallet' );
     console.log( 'dataWallet', dataWallet );
     if ( dataWallet ) {
@@ -32,6 +38,7 @@ class wallet extends Base {
         walletUser:await dataWallet.address
       } )
     }
+
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
     // console.log( 'send', send );
@@ -56,6 +63,15 @@ class wallet extends Base {
   onPressSubmitCheck = ( address ) => {
    
   };
+  onChangeToken =async (  ) => {
+    const { setToken } = this.props;
+    const {isETH} = this.state;
+    this.setState( {
+      isETH:!isETH
+    } )
+    setToken( !isETH )
+
+  }
   onPressQRFull = () => {
     const temp= <QRFull walletUser ={this.state.walletUser}></QRFull>
     this.popup = <ModalBase isShowBtn customView ={temp}></ModalBase>
@@ -82,12 +98,14 @@ class wallet extends Base {
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
-  wallet: state.wallet
+  wallet: state.wallet,
+  token: state.token
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
-  setWallet: bindActionCreators( ActionStore.setWallet, dispatch )
+  setWallet: bindActionCreators( ActionStore.setWallet, dispatch ),
+  setToken: bindActionCreators( ActionStore.setToken, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( wallet );

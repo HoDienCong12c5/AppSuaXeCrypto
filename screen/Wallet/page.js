@@ -13,7 +13,7 @@ import Img from 'assets/index';
 import Button from 'components/Button/index';
 import QRCode from 'react-native-qrcode-svg';
 import Image from 'components/Image/index';  
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler'; 
 const page = ( p ) => {
   const {
     onPressCreate,
@@ -21,9 +21,10 @@ const page = ( p ) => {
     onPressScan,
     onPressSubmitCheck,
     onPressQRFull,
-    onNexTransaction
+    onNexTransaction,
+    onChangeToken
   } = p.func;
-  const { walletUser, amount } = p.state; 
+  const { walletUser, amount, isETH } = p.state; 
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
   const listBtn=[
@@ -36,19 +37,31 @@ const page = ( p ) => {
           <View style={{flex:7}}>
             <Text style={styles.supportChain}>Nền tảng </Text>
             <View style={[styles.containerSupport,{borderBottomWidth:0}]}>
-              <Text style={styles.ethereum}>Ethereum : </Text>
-              <Image url={Img.Image.iconCoin0} style={styles.iconEthereum}/>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.ethereum}>Ethereum : </Text>
+                <Image url={Img.Image.iconCoin0} style={styles.iconEthereum}/>
+              </View>
+              <CheckBox 
+                onValueChange={() => onChangeToken( )}
+                value={isETH}>
+              </CheckBox>
+            </View>
+            <View style={[styles.containerSupport,{borderBottomWidth:0}]}>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.ethereum}>Tomo: </Text>
+                <Image url={Img.Image.iconCoin0} style={styles.iconEthereum}/>
+              </View>
+              <CheckBox 
+                onValueChange={() => onChangeToken( )}
+                value={!isETH}>
+              </CheckBox>
             </View>
             <View style={styles.containerSupport}>
-              <Text style={styles.amount}>{In18.web3.amount}: {amount} ETH </Text>
+              <Text style={styles.amount}>{In18.web3.amount}: {amount} {isETH ?'ETH' :' TOMO'} </Text>
             </View>
           </View>
           <View style={styles.containerNewTransaction}>
-            <Button 
-              onPress={()=>onNexTransaction()}
-              title={In18.web3.newTransaction}
-              styleBtn={[styles.btnNewTransaction]}
-            /> 
+           
           </View>
         </View>
         
@@ -90,8 +103,17 @@ const page = ( p ) => {
        
       </View>
       <View style={styles.containerHistory}>
-        <Text style={styles.supportChain}>Lịch sử giao dịch </Text>
+        <View  style={styles.containerHeaderHistory}>
+          <Text style={styles.supportChain}>Lịch sử giao dịch </Text>
+          <Button 
+            onPress={()=>onNexTransaction()}
+            title={In18.web3.newTransaction}
+            styleBtn={[styles.btnNewTransaction]}
+          /> 
 
+        </View>
+
+       
       </View>
     </View>
   );

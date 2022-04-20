@@ -1,14 +1,11 @@
 
 const API_URL = 'https://kovan.infura.io/v3/e4c6b2743e544bdb910ef53155687b0f';
-const SOCK_KET="wss://kovan.infura.io/ws/v3/e4c6b2743e544bdb910ef53155687b0f"
-const Web3 = require( 'web3' ); 
-const web3 = new Web3( new Web3.providers.HttpProvider( API_URL ) );
+const Web3 = require( 'web3' );
+let web3 = new Web3( new Web3.providers.HttpProvider( API_URL ) );
 import bigdecimal from 'bigdecimal'
 import store from 'react-native-simple-store';
-import converter from 'hex2dec' 
+import converter from 'hex2dec'
 import { ethers } from 'ethers'
-const  tokenAddress ="0x0000000000000000000000000000000000000000"
-const urlSeerver="https://kovan.etherscan.io/address/";
 // let web3Provider = new ethers.providers.Web3Provider( web3.currentProvider )
 
 const newWallet = async () => {
@@ -36,12 +33,6 @@ const generateWallet  = async () => {
   } );
 }
 
-//new send2
-
-//sendTrancstion
-
-
-//get gasprice
 const getGasPrice = async () => {
   return new Promise( async ( resolve, reject ) => {
     const gasPrice = await web3.eth.getGasPrice();
@@ -74,51 +65,14 @@ const convertBalanceToWei = ( strValue, iDecimal = 18 ) => {
   var convertValue = new bigdecimal.BigDecimal( String( strValue ) )
   return multiplyNum.multiply( convertValue ).toString().split( '.' )[0]
 }
-const generateDataToken = ( amount = 0, address ) => {
-  const transferOpCode = '0xa9059cbb'
-  const ABIValueToTransfer = zeroPadLeft( converter.decToHex( amount.toString().split( '.' )[0] ).replace( '0x', '' ), 64 )
-
-  if ( address ) {
-    const ethNakedAddress = address.toLowerCase().replace( '0x', '' )
-    const ABIAddressTarget = zeroPadLeft( ethNakedAddress )
-    return transferOpCode + ABIAddressTarget + ABIValueToTransfer
-  } else {
-    return transferOpCode + ABIValueToTransfer
-  }
-}
-const zeroPadLeft = ( text, length = 64 ) => {
-  while ( text.length < length ) {
-    text = '0' + text
-  }
-  return text
-}
-//get hiistory
-const getHistory = async ( address ) => {
-  
-  console.log( '-------------------------------------------------------' );
-  web3.eth.defaultAccount = address ;
-
-  web3.eth.getAccounts( console.log );
-  // web3.eth.getPendingTransactions().then( console.log );
-  console.log( '-------------------------------------------------------' );
-  web3.eth.getTransaction( '0x01c6e7f70d0ad2cb4fa843cc2c5d5230eea6e57970587d8b05c5efa4566412be' )
-    .then( console.log );
-  const n = await web3.eth.getTransactionCount( address )
-  console.log( 'n', n );
-
-  console.log( '-------------',web3.eth.defaultAccount );
-
-}
 const sendTransaction=async( privateKey, to, value )=>{
-  
   value=await web3.utils.numberToHex( convertBalanceToWei( value ) )
   return new Promise( async ( resolve, reject ) => { 
     console.log( 'start' );
     const web3Provider = new ethers.providers.Web3Provider( web3.currentProvider )
     let ethWallet = new ethers.Wallet( privateKey, web3Provider )
     ethWallet.connect( web3Provider ) 
-    let nonceCustom = -1
-    let gasPriceCustom
+    let nonceCustom = -1 
     nonceCustom = await web3.eth.getTransactionCount( ethWallet.address )
     console.log( 'nonceCustom', nonceCustom ) 
 
@@ -153,13 +107,7 @@ const sendTransaction=async( privateKey, to, value )=>{
       } )
   
   
-    } ) )
-
-    // console.log( 'rawTransaction', rawTransaction );
-    
-  
-
-
+    } ) ) 
   } )
   
 }
@@ -169,7 +117,7 @@ const getDataHistory= ( path, queryBody ) =>{
 const postGateWay= ( url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCustom = 5000, customAuth = null, isCustomLink = false )=> {
   const callApi = new Promise( async ( resolve, reject ) => {
     try {
-      const userToken = ReduxService.getUserToken()
+      // const userToken = ReduxService.getUserToken()
       const token = customAuth || userToken
       const params = {
         method,
@@ -217,5 +165,5 @@ export default {
   newWallet,
   sendTransaction,
   getStoreLocalWallet,
-  getHistory
+  getDataHistory
 }

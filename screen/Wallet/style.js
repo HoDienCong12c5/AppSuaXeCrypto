@@ -10,7 +10,7 @@ const styles = StyleSheet.create( {
   },
   containerSupport:{
     flexDirection:'row',
-    // justifyContent:'space-between',
+    justifyContent:'space-between',
     // width:width( 90 ),
     alignItems:'center',
     // borderBottomWidth:1,
@@ -29,6 +29,7 @@ const styles = StyleSheet.create( {
   },
   ethereum:{
     fontSize: height( 2.5 )
+    // width:width( 25 )
   },
   containerAddress:{
     flexDirection:'row',
@@ -70,6 +71,13 @@ const styles = StyleSheet.create( {
     width:width( 20 ),
     paddingHorizontal:0,
     padding:0
+  },
+  containerHeaderHistory:{
+    justifyContent:'space-between',
+    flexDirection:'row',
+    alignItems:'center',
+    marginTop:20
+
   }
 
 } );

@@ -6,5 +6,6 @@ const initState = {
   menuFooter: MENU.HOME,
   user: null,
   list: [],
+  token: true
 };
 export default initState;

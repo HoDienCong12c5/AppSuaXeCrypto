@@ -51,3 +51,9 @@ export const wallet = createReducer( initState.numberInit, {
     return action.payload;
   }
 } );
+export const token = createReducer( initState.token, {
+  [KEY_PAGE.TOKEN]( state, action ) {
+    return action.payload;
+  }
+} );
+

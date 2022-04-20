@@ -93,7 +93,6 @@ const page = ( p ) => {
             <Text style={styles.label}>{In18.NormalTitle.questionWorker} </Text>
             <CheckBox
               onValueChange={() => setisCheckWorker( isWorker )}
-
               value={isWorker}
             />
           </View>

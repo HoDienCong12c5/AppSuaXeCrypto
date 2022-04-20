@@ -15,7 +15,8 @@ export const KEY_PAGE = {
   SET_CALENDER: 'SET_CALENDER',
   SET_CALENDER_DOING: 'SET_CALENDER_DOING',
   MESSAGE: 'MESSAGE',
-  WALLET: 'WALLET'
+  WALLET: 'WALLET',
+  TOKEN : 'TOKEN'
 };
 
 export default Title = {
@@ -148,6 +149,7 @@ export default Title = {
     receive:'Nhận tiền',
     amount:'Số Token (coin)',
     toAddress:'Địa chỉ nhận'
+
   }
 };
 export const chainType = {
