@@ -16,9 +16,11 @@ class index extends Base {
     this.state = {
       sdt: '',
       toAdd: '',
-      isShowPopup: false
+      isShowPopup: false,
+      isSending: true
     };
   }
+
   openPopup = () => {
     console.log( 'openPopup' );
     this.setState( {
@@ -36,8 +38,22 @@ class index extends Base {
 
   }
   onPressSend = async () => {
+    const { user, calender, setCalender } = this.props;
+    const callback = async () => {
+      this.setState( {
+
+        isSending: false
+      } );
+    }
+    if( this.state.isSending ){
+      console.log( 'onPressSend' );
+    }
+    else{
+      Alert.alert( 'Thông báo', 'Đang gửi...' );
+    }
   }
   onPressBack=()=>{
+    // console.log( 'onPressB/ack' ); 
 
   }
   componentDidMount() {

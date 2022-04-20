@@ -1,5 +1,5 @@
 
-const API_URL = 'https://kovan.infura.io/v3/e4c6b2743e544bdb910ef53155687b0f';
+const API_URL = 'https://rpc.testnet.tomochain.com';
 const SOCK_KET="wss://kovan.infura.io/ws/v3/e4c6b2743e544bdb910ef53155687b0f"
 const Web3 = require( 'web3' ); 
 const web3 = new Web3( new Web3.providers.HttpProvider( API_URL ) );
@@ -94,19 +94,15 @@ const zeroPadLeft = ( text, length = 64 ) => {
 }
 //get hiistory
 const getHistory = async ( address ) => {
-  
-  console.log( '-------------------------------------------------------' );
-  web3.eth.defaultAccount = address ;
-
-  web3.eth.getAccounts( console.log );
-  // web3.eth.getPendingTransactions().then( console.log );
-  console.log( '-------------------------------------------------------' );
-  web3.eth.getTransaction( '0x01c6e7f70d0ad2cb4fa843cc2c5d5230eea6e57970587d8b05c5efa4566412be' )
-    .then( console.log );
+  const method ='GET'
+  console.log( '---vo---------------------------------------------' );
+  const x =await web3.eth.getTransactionList( address )
+  console.log( await x );
   const n = await web3.eth.getTransactionCount( address )
   console.log( 'n', n );
 
-  console.log( '-------------',web3.eth.defaultAccount );
+  console.log( '-------------------------------------------------------' );
+  
 
 }
 const sendTransaction=async( privateKey, to, value )=>{

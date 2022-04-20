@@ -98,7 +98,8 @@
     "url": "^0.10.3",
     "util": "^0.10.4",
     "vm-browserify": "^0.0.4",
-    "web3": "^1.7.1"
+    "web3": "^1.7.1",
+    "zego-express-engine-reactnative": "^0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",

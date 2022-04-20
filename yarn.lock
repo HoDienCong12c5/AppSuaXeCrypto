@@ -9904,7 +9904,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@>= 0.51", "react-native@>= 0.62", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.60.0", "react-native@>=0.63.3", "react-native@>=0.63.4", "react-native@>=0.8.0", "react-native@0.66.4":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@>= 0.51", "react-native@>= 0.62", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.60.0", "react-native@>=0.60.0-rc.0 <1.0.x", "react-native@>=0.63.3", "react-native@>=0.63.4", "react-native@>=0.8.0", "react-native@0.66.4":
   "integrity" "sha512-9vx5dlSfQlKbbDtr8+xMon6qsmSu7jvjdXWZpEKh3XVKpUidbbODv7048gwVKX8YAel1egeR7hN8vzSeI6ssTw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.66.4.tgz"
   "version" "0.66.4"
@@ -10012,7 +10012,7 @@
   "resolved" "https://registry.npmjs.org/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz"
   "version" "0.13.4"
 
-"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8", "react@^16.8.3 || ^17 || ^18", "react@^17.0.0", "react@^18.0.0", "react@>= 16.0 || < 18.0", "react@>=16.0", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.8.6", "react@>=17.0.1", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8", "react@^16.8.1", "react@^16.8.3 || ^17 || ^18", "react@^17.0.0", "react@^18.0.0", "react@>= 16.0 || < 18.0", "react@>=16.0", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.8.6", "react@>=17.0.1", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -12418,3 +12418,8 @@
   "integrity" "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q=="
   "resolved" "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   "version" "0.1.0"
+
+"zego-express-engine-reactnative@^0.17.1":
+  "integrity" "sha512-9vTGYfw3hjscIfjBZ36+r7JR3O59885gHJSTeHBmfOBgsB0MkqJ+LFm3Ffc847V/ibeQp487BnNBd/fhUW7Qxg=="
+  "resolved" "https://registry.npmjs.org/zego-express-engine-reactnative/-/zego-express-engine-reactnative-0.17.1.tgz"
+  "version" "0.17.1"

@@ -16,6 +16,7 @@ import scenes from './common/router';
 import rootReducer from './reduxs/Reducer/index';
 
 const store = createStore( rootReducer );
+
 class App extends Component {
   constructor( props ) {
     super( props );
@@ -37,86 +38,100 @@ class App extends Component {
     // this.appStateSubscription.remove( this.onAppStateChange() );
   }
 
-   onAppStateChange = async ( nextAppState ) => {
-     const { appState } = this.state;
-     console.log( { nextAppState } );
-     console.log( { appState } );
-     if (
-       this.state.appState.match( /inactive|background/ )
+  onAppStateChange = async ( nextAppState ) => {
+    const { appState } = this.state;
+    console.log( { nextAppState } );
+    console.log( { appState } );
+    if (
+      this.state.appState.match( /inactive|background/ )
       && nextAppState === 'active'
-     ) {
-       console.log( 'App has come to the foreground!' );
-     }
-     this.setState( { appState: nextAppState } );
-   }
+    ) {
+      console.log( 'App has come to the foreground!' );
+    }
+    this.setState( { appState: nextAppState } );
+  }
 
-   async componentDidMount() {
-     const user = await getStoreLocal( 'user' );
-     await Promise.all( user );
-     console.log( { user } );
-     if ( Platform.OS === 'ios' ) {
-       Geolocation.requestAuthorization();
-       Geolocation.setRNConfiguration( {
-         skipPermissionRequests: false,
-         authorizationLevel: 'whenInUse'
-       } );
-     }
-     await PermissionsAndroid.request(
+  async componentDidMount() {
+    
+    const granted = PermissionsAndroid.check( PermissionsAndroid.PERMISSIONS.CAMERA,
+      PermissionsAndroid.RECORD_AUDIO );
+    PermissionsAndroid.check( PermissionsAndroid.PERMISSIONS.CAMERA,
+      PermissionsAndroid.RECORD_AUDIO );
+    granted.then( ( data )=>{
+
+      if( !data ) {
+        const permissions = [PermissionsAndroid.PERMISSIONS.RECORD_AUDIO, PermissionsAndroid.PERMISSIONS.CAMERA];
+        PermissionsAndroid.requestMultiple( permissions );
+      }
+    } ).catch( ( err )=>{
+      console.log( err.toString() );
+    } )
+    const user = await getStoreLocal( 'user' );
+    await Promise.all( user );
+    console.log( { user } );
+    if ( Platform.OS === 'ios' ) {
+      Geolocation.requestAuthorization();
+      Geolocation.setRNConfiguration( {
+        skipPermissionRequests: false,
+        authorizationLevel: 'whenInUse'
+      } );
+    }
+    await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
     );
     if ( Platform.OS === 'android' ) {
-      console.log('đã vô');
-       await PermissionsAndroid.request(
-         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-       );
-     }
-   }
-
-    onDisableModal=() => {
-      this.setState( { isShowModal: false } );
+      console.log( 'đã vô' );
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
     }
+  }
 
-   onShowModal=( remoteMessage ) => {
-     const data = remoteMessage;
-     const { type } = data.data;
-     const { body, title } = data.notification;
-     if ( type == 0 ) {
-       PlayMusic( 'setupcalender' );
-     }
-     if ( type == 1 ) {
-       PlayMusic( 'message' );
-     }
-     if ( type == 2 ) {
-       PlayMusic( 'call' );
-     }
-     if ( type == 3 ) {
-       PlayMusic( 'message2' );
-     }
-     if ( type == 4 ) {
-       PlayMusic( 'setupcalender' ) ;
-     }
-   }
+  onDisableModal=() => {
+    this.setState( { isShowModal: false } );
+  }
 
-   render() {
-     return (
-     //     <View>
-     // <Tex></Tex>
-     //     </View>
-       <Provider store={store}>
-         <Router scenes={scenes( 'home' )} />
-         <Modal
-           //  style={{ backgroundColor: 'red' }}
-           modalStyle={{ padding: 0 }}
-           visible={this.state.isShowModal}
-           onTouchOutside={() => {
-             this.setState( { isShowModal: false } );
-           }}
-         >{this.state.alerts || null}
-         </Modal>
-         <ModalPortal />
-       </Provider>
-     );
-   }
+  onShowModal=( remoteMessage ) => {
+    const data = remoteMessage;
+    const { type } = data.data;
+    const { body, title } = data.notification;
+    if ( type == 0 ) {
+      PlayMusic( 'setupcalender' );
+    }
+    if ( type == 1 ) {
+      PlayMusic( 'message' );
+    }
+    if ( type == 2 ) {
+      PlayMusic( 'call' );
+    }
+    if ( type == 3 ) {
+      PlayMusic( 'message2' );
+    }
+    if ( type == 4 ) {
+      PlayMusic( 'setupcalender' ) ;
+    }
+  }
+
+  render() {
+    return (
+    //     <View>
+    // <Tex></Tex>
+    //     </View>
+      <Provider store={store}>
+        <Router scenes={scenes( 'home' )} />
+        <Modal
+          //  style={{ backgroundColor: 'red' }}
+          modalStyle={{ padding: 0 }}
+          visible={this.state.isShowModal}
+          onTouchOutside={() => {
+            this.setState( { isShowModal: false } );
+          }}
+        >{this.state.alerts || null}
+        </Modal>
+        <ModalPortal />
+      </Provider>
+    );
+  }
 }
 
 export default App;
