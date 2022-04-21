@@ -80,5 +80,11 @@ export default class StorageReduxAction {
       payload
     };
   }
-  
+  static setListChat( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.LIST_CHAT,
+      payload
+    };
+  }
 }

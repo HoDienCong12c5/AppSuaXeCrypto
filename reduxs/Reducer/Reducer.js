@@ -51,6 +51,12 @@ export const wallet = createReducer( initState.numberInit, {
     return action.payload;
   }
 } );
+export const listChat = createReducer( initState.list, {
+  [KEY_PAGE.LIST_CHAT]( state, action ) {
+    return action.payload;
+  }
+} );
+
 export const token = createReducer( initState.token, {
   [KEY_PAGE.TOKEN]( state, action ) {
     return action.payload;

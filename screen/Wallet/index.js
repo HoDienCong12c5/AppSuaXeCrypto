@@ -89,7 +89,7 @@ class wallet extends Base {
         props={this.props}
         func={this}
         state={this.state}
-        showBtnBack={false}
+        // showBtnBack={false}
         noFooter
       />
     );

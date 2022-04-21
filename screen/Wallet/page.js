@@ -49,7 +49,7 @@ const page = ( p ) => {
             <View style={[styles.containerSupport,{borderBottomWidth:0}]}>
               <View style={{flexDirection:'row'}}>
                 <Text style={styles.ethereum}>Tomo: </Text>
-                <Image url={Img.Image.iconCoin0} style={styles.iconEthereum}/>
+                <Image url={Img.Image.iconCoin1} style={styles.iconEthereum}/>
               </View>
               <CheckBox 
                 onValueChange={() => onChangeToken( )}

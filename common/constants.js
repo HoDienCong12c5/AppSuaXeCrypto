@@ -16,7 +16,8 @@ export const KEY_PAGE = {
   SET_CALENDER_DOING: 'SET_CALENDER_DOING',
   MESSAGE: 'MESSAGE',
   WALLET: 'WALLET',
-  TOKEN : 'TOKEN'
+  TOKEN : 'TOKEN',
+  LIST_CHAT: 'LIST_CHAT'
 };
 
 export default Title = {
@@ -204,3 +205,4 @@ export const APP_ENVIRONMENT = {
   MAINNET: 'MAINNET',
   TESTNET: 'TESTNET'
 };
+

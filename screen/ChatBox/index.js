@@ -8,21 +8,34 @@ import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
-class Setting extends Base {
+import Content from './content';
+class ChatBox extends Base {
   constructor( props ) {
     super( props );
     this.page = Page;
     this.state = {
       sdt: '',
       countCalender: 0
+
     };
   }
 
   async componentDidMount() {
   }
-
-  onPressLogOut=() => {
-
+  searchType=async ( text )=>{
+    let indexType=0;
+    for( var i = 0 ; i< Content.Problem.length; i++ ){
+      if( Content.Problem[i].name.toLowerCase().indexOf( text.toLowerCase() ) !== -1 ){
+        indexType=i; 
+        const price = Content.PriceStart[i] +Content.PriceEnd[i];
+        console.log( 'price',price );
+        return price
+      }
+    }
+    
+  }
+  onPressSend=() => {
+  
   }
 
   onPressActions= ( type ) => {
@@ -53,7 +66,7 @@ class Setting extends Base {
         props={this.props}
         func={this}
         state={this.state}
-        showBtnBack={false}
+        // showBtnBack={false}
       />
     );
   }
@@ -61,14 +74,11 @@ class Setting extends Base {
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
-  calender: state.calender,
-  calenderDoing: state.calenderDoing
+  lisChat: state.lisChat
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
-  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
-  setCalender: bindActionCreators( ActionStore.setCalender, dispatch ),
-  setCalenderDoing: bindActionCreators( ActionStore.setCalenderDoing, dispatch )
+  setListChat: bindActionCreators( ActionStore.setListChat, dispatch )
 } );
-export default connect( mapStateToProps, mapDispatchToProps )( Setting );
+export default connect( mapStateToProps, mapDispatchToProps )( ChatBox );
