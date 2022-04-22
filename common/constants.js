@@ -17,7 +17,8 @@ export const KEY_PAGE = {
   MESSAGE: 'MESSAGE',
   WALLET: 'WALLET',
   TOKEN : 'TOKEN',
-  LIST_CHAT: 'LIST_CHAT'
+  LIST_CHAT: 'LIST_CHAT',
+  HISTORY:'HISTORY'
 };
 
 export default Title = {
@@ -149,7 +150,8 @@ export default Title = {
     send:'Gửi tiền',
     receive:'Nhận tiền',
     amount:'Số Token (coin)',
-    toAddress:'Địa chỉ nhận'
+    toAddress:'Địa chỉ nhận',
+    sending:'Đang gửi'
 
   }
 };

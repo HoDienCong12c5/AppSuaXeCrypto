@@ -65,6 +65,16 @@ const styles = StyleSheet.create( {
   },
   textTitle:{
     fontSize:16
+  },
+  btnSend:{
+    width:width( 60 ),
+    height:height( 9 ),
+    backgroundColor:Colors.ORANGE2
+  },
+  textBtnSend:{
+    fontSize:16,
+    fontWeight:'bold'
+    // marginLeft:10
   }
 } )
 export default styles

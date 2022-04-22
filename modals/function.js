@@ -5,6 +5,7 @@ import In18 from 'common/constants';
 import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
+import { isBuffer } from '@walletconnect/utils';
 
 const firestores = firestore().collection( 'User' );
 const firestoresBill = firestore().collection( 'Build' );
@@ -83,7 +84,8 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass, 
     pass: _pass,
     luotXem: '0',
     token: _token,
-    privateKey:''
+    privateKey:'',
+    addressWallet:''
   };
   await firestores
     .add( {
@@ -96,7 +98,9 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass, 
       image: '',
       pass: _pass,
       luotXem: '0',
-      token: _token
+      token: _token,
+      privateKey:'',
+      addressWallet:''
     } )
     .then( async ( ) => {
       setStoreLocal( users );
@@ -139,7 +143,14 @@ export const SaveProfile = async ( idUser, type, text ) => {
     if ( type === 7 ) {
       return { image: text };
     }
+    if ( type === 8 ) {
+      return { 
+        privateKey: text.privateKey,
+        addressWallet: text.address
+      };
+    }
     return { checkWorker: text };
+    
   };
   const names = getNameType( type, text );
   try {
@@ -198,7 +209,9 @@ export const getAllListWorker = async ( userId, xUser, yUser ) => {
             pass: datas.pass,
             checkWorker: datas.checkWorker,
             distance: distances,
-            token: datas.token
+            token: datas.token,
+            privateKey: datas.privateKey,
+            addressWallet: datas.addressWallet
           };
           list.push( temp );
         }
@@ -228,7 +241,9 @@ export const getListCall = async ( xUser, yUser ) => {
             pass: datas.pass,
             checkWorker: datas.checkWorker,
             distance: distances,
-            token: datas.token
+            token: datas.token,
+            privateKey: datas.privateKey,
+            addressWallet: datas.addressWallet
           };
           list.push( temp );
         }
@@ -313,7 +328,9 @@ export const getLisBill = async ( sdtUser, checkWorker ) => {
                   date: datas.date,
                   status: datas.status,
                   dataEnd: datas.dateEnd,
-                  address: datas.address
+                  address: datas.address,
+                  privateKey: datas.privateKey,
+                  addressWallet: datas.addressWallet
                 };
                 list.push( temp );
               }
@@ -328,7 +345,9 @@ export const getLisBill = async ( sdtUser, checkWorker ) => {
                 date: datas.date,
                 status: datas.status,
                 dateEnd: datas.dateEnd,
-                address: datas.address
+                address: datas.address,
+                privateKey: datas.privateKey,
+                addressWallet: datas.addressWallet
               };
               list.push( temp );
             } else {
@@ -342,7 +361,9 @@ export const getLisBill = async ( sdtUser, checkWorker ) => {
                 status: datas.status,
                 dateEnd: datas.dateEnd,
                 sdtCustomer: datas.sdtCustomer,
-                address: datas.address
+                address: datas.address,
+                privateKey: datas.privateKey,
+                addressWallet: datas.addressWallet
               };
               list.push( temp );
             }
@@ -587,6 +608,21 @@ export const setLocationUser = async ( idUser, x, y ) => {
     .then( () => {
     } ).catch( ( err ) => console.log( { err } ) );
 };
+export const getStoreLocals = async ( key ) => {
+  return new Promise( async ( resolve, reject ) => {
+    store.get( key ).then( ( res ) => { 
+      if( res!=null ){
+        resolve( res );
+      }
+      else{
+        resolve( null );
+      }
+    } );
+  } ) 
+};
+export const setStoreLocals = async ( key, value ) => {
+  await store.save( key, value )
+};
 // Import the react-native-sound module
 const Sound = require( 'react-native-sound' );
 
@@ -597,3 +633,6 @@ export const PlayMusic = async ( name, time = 99999 ) => {
     whoosh.play( );
   } );
 };
+
+
+// web3.eth.accounts.privateKeyToAccount

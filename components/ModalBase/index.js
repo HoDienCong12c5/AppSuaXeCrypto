@@ -9,7 +9,8 @@ import Img from 'assets/index';
 export default function index( props ) {
   const {
     title, description, onPressSuccess, onPressClose, titleBtnSuccess, titleBtnClose,
-    noIcon = false, isBtnSuccess = true, customView = null, customViewButton = null, isShowBtn=false
+    noIcon = false, isBtnSuccess = true, customView = null, customViewButton = null, isShowBtn=false,
+    icon=null
   } = props;
   console.log( isShowBtn );
   return (
@@ -20,7 +21,7 @@ export default function index( props ) {
             <View>
               {
                 noIcon === true ? null : (
-                  <Image url={Img.Image.iconWarning} style={styles.iconWarning}></Image>
+                  <Image url={icon||Img.Image.iconWarning} style={styles.iconWarning}></Image>
                 )
               }
               <View style={styles.content}>

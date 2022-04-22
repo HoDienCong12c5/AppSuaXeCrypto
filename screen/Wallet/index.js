@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register, getLisBill } from 'modals/function';
+import { SaveProfile, setStoreLocals, getStoreLocals } from 'modals/function';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
@@ -19,25 +19,16 @@ class wallet extends Base {
     this.state = {
       isLoad:false,
       walletUser:'',
-      amount:'0',
-      isETH:true
+      amount:'0'
     }
     
   }
 
   async componentDidMount() {
-    const {token} = this.props;
-    this.setState( {
-      isETH:token
-    } );
-    console.log( 'token', token );
-    const dataWallet = await ClassWeb3.getStoreLocalWallet( 'wallet' );
-    console.log( 'dataWallet', dataWallet );
-    if ( dataWallet ) {
-      this.setState( {
-        walletUser:await dataWallet.address
-      } )
-    }
+    const {setToken} = this.props;
+    const walletUser = await getStoreLocals( 'token' );
+    await setToken( walletUser ); 
+    console.log( 'token',walletUser );
 
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
@@ -45,8 +36,9 @@ class wallet extends Base {
   }
 
   onPressCreate=async() => {
+    const {user} = this.props;
     const walletNew = await ClassWeb3.newWallet();
-   
+    await SaveProfile( user.id, 8,walletNew );
     const {setWallet, wallet} = this.props;
     setWallet( await walletNew );
     console.log( 'wallet', wallet );
@@ -64,12 +56,8 @@ class wallet extends Base {
    
   };
   onChangeToken =async (  ) => {
-    const { setToken } = this.props;
-    const {isETH} = this.state;
-    this.setState( {
-      isETH:!isETH
-    } )
-    setToken( !isETH )
+    const { setToken, token } = this.props;
+    await setToken( !token )
 
   }
   onPressQRFull = () => {

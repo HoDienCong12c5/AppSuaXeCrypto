@@ -4,7 +4,6 @@ import {
   Alert, View, PermissionsAndroid, Platform
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-// import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import storage from '@react-native-firebase/storage';
@@ -103,7 +102,9 @@ class Login extends Base {
                   image: datas.image,
                   pass: datas.pass,
                   checkWorker: datas.checkWorker,
-                  token: token
+                  token: token,
+                  privateKey: datas.privateKey,
+                  addressWallet: datas.addressWallet
                 };
                 console.log( temp );
                 await updateToken( documentSnapshot.id, token );

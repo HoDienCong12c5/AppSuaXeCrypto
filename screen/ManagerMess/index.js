@@ -1,8 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import store from 'react-native-simple-store';
-import User from 'modals/Users';
+import store from 'react-native-simple-store'; 
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Base from 'container/BaseContainer';

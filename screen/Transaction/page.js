@@ -56,10 +56,18 @@ export default function page( p ) {
           </View>
           <Text style={styles.textTitle}>ETH / USDT</Text>
         </View>
+        <View  style={{marginTop:30}}>
+          <Button
+            onPress={onPressSend}
+            icon={Img.Image.iconSend}
+            title={In18.web3.send} 
+            styleBtn={styles.btnSend}
+            styleText={styles.textBtnSend}
+          />
+       
+        </View>
       </View>
-      <TouchableOpacity onPress={()=>Actions.pop()} >
-        <Image url={Img.Image.icBack} style={styles.iconBack} /> 
-      </TouchableOpacity>
+     
       {/* <View style={styles.containerHeader}>
         <TouchableOpacity onPress={Actions.pop()} >
           <Image url={Img.Image.icBack} style={styles.iconBack} /> 

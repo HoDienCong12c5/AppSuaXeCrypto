@@ -4,13 +4,9 @@ import {
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import database from '@react-native-firebase/database';
-import User from './user';
+ 
 
-export default function screen1() {
-  const user = User.getInstance();
-  const [name, setName] = useState( user.getName() );
-  console.log( '====================================' );
-  console.log( name );
+export default function screen1() { 
   console.log( '====================================' );
   const onPress = () => {
     user.setName( name );

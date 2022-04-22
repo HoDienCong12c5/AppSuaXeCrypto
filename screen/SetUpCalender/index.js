@@ -3,7 +3,6 @@ import {
   Alert, View, PermissionsAndroid, Platform
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-// import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import storage from '@react-native-firebase/storage';

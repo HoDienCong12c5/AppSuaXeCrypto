@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import { connect } from 'react-redux';
 import { getListWorkerNear } from 'modals/function';
-import User from 'modals/User';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';

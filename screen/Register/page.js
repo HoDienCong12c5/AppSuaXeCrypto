@@ -9,8 +9,7 @@ import TextInput from 'components/TextInput/index';
 import Img from 'assets/index';
 import Image from 'components/Image/index';
 import styles from './style';
-import Button from '../../components/Button/index';
-import Userss from '../../modals/Users';
+import Button from '../../components/Button/index'; 
 
 const page = ( p ) => {
   const {

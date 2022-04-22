@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, View, Text } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import User from 'modals/User';
 import database from '@react-native-firebase/database';  
 // import firebases from 'react-native-firebase';
 

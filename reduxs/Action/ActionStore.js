@@ -87,4 +87,11 @@ export default class StorageReduxAction {
       payload
     };
   }
+  static setHistory( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.HISTORY,
+      payload
+    };
+  }
 }

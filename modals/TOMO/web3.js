@@ -105,6 +105,7 @@ const getHistory = async ( address ) => {
   
 
 }
+
 const sendTransaction=async( privateKey, to, value )=>{
   
   value=await web3.utils.numberToHex( convertBalanceToWei( value ) )
@@ -112,14 +113,13 @@ const sendTransaction=async( privateKey, to, value )=>{
     console.log( 'start' );
     const web3Provider = new ethers.providers.Web3Provider( web3.currentProvider )
     let ethWallet = new ethers.Wallet( privateKey, web3Provider )
-    ethWallet.connect( web3Provider ) 
-    let nonceCustom = -1
-    let gasPriceCustom
-    nonceCustom = await web3.eth.getTransactionCount( ethWallet.address )
-    console.log( 'nonceCustom', nonceCustom ) 
+    ethWallet.connect( web3Provider )
 
+    let nonceCustom = -1
+
+    nonceCustom = await web3.eth.getTransactionCount( ethWallet.address )
     const gasPrice = await web3.utils.numberToHex( await getGasPrice() )
-    console.log( 'gasPrice', gasPrice );
+
 
     const rawTransaction = {
       nonce: nonceCustom > 0 ? `0x${nonceCustom.toString( 16 )}` : nonceCustom === 0 ? `0x${nonceCustom.toString( 16 )}` : nonce,
@@ -137,7 +137,6 @@ const sendTransaction=async( privateKey, to, value )=>{
       console.log( 'rawTransaction', rawTransaction );
   
       const signedTransaction = await ethWallet.signTransaction( rawTransaction )
-      console.log( 'signedTransaction', signedTransaction );
       web3.eth.sendSignedTransaction( signedTransaction, ( error, result ) => {
         if ( error ) {
           console.log( 'error', error );
@@ -147,15 +146,7 @@ const sendTransaction=async( privateKey, to, value )=>{
           resolve( result )
         }
       } )
-  
-  
     } ) )
-
-    // console.log( 'rawTransaction', rawTransaction );
-    
-  
-
-
   } )
   
 }

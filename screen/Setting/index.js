@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register, getLisBill } from 'modals/function';
+import { Register, getLisBill,getStoreLocals } from 'modals/function';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
@@ -19,6 +19,20 @@ class Setting extends Base {
   }
 
   async componentDidMount() {
+    // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
+
+    // const send = await ClassWeb3.newWallet()
+    // console.log( 'ClassWeb3.sendTransaction', send ); 
+    // await ClassWeb3.sendTransaction( privateKey, toAdd,0.00001 )
+    // const { user, calender, setCalender } = this.props;
+    // const list = await getLisBill( user.sdt );
+    // let count = 0;
+    // list.map( ( item ) => {
+    //   if ( item.status == 0 ) {
+    //     count++;
+    //   }
+    // } );
+    // setCalender( count );
   }
 
   onPressLogOut=() => {

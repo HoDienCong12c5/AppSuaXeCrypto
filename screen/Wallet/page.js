@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
-import User from 'modals/User';
+ 
 import In18 from 'common/constants';
 import TextInput from 'components/TextInput/index';
 import { height, width } from 'common/styles';
@@ -25,6 +25,7 @@ const page = ( p ) => {
     onChangeToken
   } = p.func;
   const { walletUser, amount, isETH } = p.state; 
+  const {token} = p.props;
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
   const listBtn=[
@@ -43,7 +44,7 @@ const page = ( p ) => {
               </View>
               <CheckBox 
                 onValueChange={() => onChangeToken( )}
-                value={isETH}>
+                value={token}>
               </CheckBox>
             </View>
             <View style={[styles.containerSupport,{borderBottomWidth:0}]}>
@@ -53,11 +54,11 @@ const page = ( p ) => {
               </View>
               <CheckBox 
                 onValueChange={() => onChangeToken( )}
-                value={!isETH}>
+                value={!token}>
               </CheckBox>
             </View>
             <View style={styles.containerSupport}>
-              <Text style={styles.amount}>{In18.web3.amount}: {amount} {isETH ?'ETH' :' TOMO'} </Text>
+              <Text style={styles.amount}>{In18.web3.amount}: {amount} {token ?'ETH' :' TOMO'} </Text>
             </View>
           </View>
           <View style={styles.containerNewTransaction}>
