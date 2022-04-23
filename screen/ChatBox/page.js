@@ -3,8 +3,7 @@ import {
   View, StyleSheet, TouchableOpacity, Image, ScrollView
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import CheckBox from '@react-native-community/checkbox';
-import User from 'modals/User';
+import CheckBox from '@react-native-community/checkbox'; 
 import In18 from 'common/constants';
 import TextInput from 'components/TextInput/index';
 import { height, width } from 'common/styles';

@@ -6,7 +6,7 @@
     "paths": {
       "common/*": [
         "common/*"
-      ],s
+      ],
       "components/*": [
         "./components/*"
       ],

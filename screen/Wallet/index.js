@@ -25,10 +25,10 @@ class wallet extends Base {
   }
 
   async componentDidMount() {
-    const {setToken} = this.props;
-    const walletUser = await getStoreLocals( 'token' );
-    await setToken( walletUser ); 
-    console.log( 'token',walletUser );
+    const {user} = this.props;
+    this.setState( {
+      walletUser : user.addressWallet
+    } )
 
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
@@ -38,12 +38,10 @@ class wallet extends Base {
   onPressCreate=async() => {
     const {user} = this.props;
     const walletNew = await ClassWeb3.newWallet();
+    console.log( 'walletNew',await walletNew );
     await SaveProfile( user.id, 8,walletNew );
-    const {setWallet, wallet} = this.props;
-    setWallet( await walletNew );
-    console.log( 'wallet', wallet );
     this.setState( {
-      walletUser:await walletNew.address
+      walletUser: walletNew.address
     } )  
   }
   onPressSend=async( sdt, data ) => {
@@ -66,8 +64,8 @@ class wallet extends Base {
     this.openModal()
   }
   onNexTransaction = () => {
-    console.log( 'lõi' );
-    Actions.transactionNew( {amount :100} )
+    const { setToken, token } = this.props;
+    Actions.transactionNew( {nameToke :token} )
   }
   render() {
     const Template = this.view;

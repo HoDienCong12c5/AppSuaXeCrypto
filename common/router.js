@@ -44,9 +44,9 @@ const scenes = ( key ) => {
       <Scene key="calender" component={Calender} title="Tìm kiếm thợ" />
       <Scene key="calenderDoing" component={CalenderDoing} title="Tìm kiếm thợ" />
       {/* <Scene key="user" component={User} title="Tìm kiếm thợ"initial /> */}
-      <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ"  />
+      <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ"   />
       <Scene key="momo" component={Momo} title="Tìm kiếm thợ" />
-      <Scene key="chatBox" component={ChatBox} title="Tìm kiếm thợ" initial/>
+      <Scene key="chatBox" component={ChatBox} title="Tìm kiếm thợ" />
     </Scene>
   );
 };

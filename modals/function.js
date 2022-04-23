@@ -161,7 +161,10 @@ export const SaveProfile = async ( idUser, type, text ) => {
         await firestores.doc( idUser )
           .update( names )
           .then( () => {
-            Alert.alert( In18.Notification.successMessage );
+            if( type!=8 ){
+              Alert.alert( In18.Notification.successMessage );
+            }
+            
           } ).catch( ( err ) => console.log( { err } ) );
       }
     } else {
