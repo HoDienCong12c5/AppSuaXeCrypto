@@ -80,6 +80,7 @@ class Regitster extends Base {
     tep.forEach( ( element ) => {
       str += element;
     } );
+    console.log( 'str',str );
     return str;
   }
 

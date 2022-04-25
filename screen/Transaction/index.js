@@ -10,7 +10,8 @@ import Page from './page'
 import React from 'react';
 import TOMO from 'modals/TOMO/web3';
 import ModalSending from 'components/ModalBase/index'
-import Img from 'assets/index';
+import Img from 'assets/index'; 
+import QRScan from './QRScan';
 //class component
 class index extends Base {
   constructor( props ) {
@@ -27,9 +28,15 @@ class index extends Base {
 
   openPopup = () => {
     console.log( 'openPopup' );
+    const { isShowPopup } = this.state;
     this.setState( {
-      isShowPopup: !this.state.isShowPopup
+      isShowPopup: !isShowPopup
     } );
+    // this.popup=<QRScan onReadScan={this.onReadScan}/>
+    // this.openPopup();
+  }
+  onReadScan = ( data ) => {
+    console.log( 'onReadScan', data );
   }
   onChangeAmount = ( value ) => {
     this.setState( {

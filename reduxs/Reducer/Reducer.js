@@ -62,4 +62,10 @@ export const token = createReducer( initState.token, {
     return action.payload;
   }
 } );
+export const balance = createReducer( initState.numberInit, {
+  [KEY_PAGE.BALANCE]( state, action ) {
+    return action.payload;
+  }
+} );
+
 

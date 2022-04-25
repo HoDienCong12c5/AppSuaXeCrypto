@@ -29,8 +29,7 @@ const page = ( p ) => {
     onChangeAddress,
     setisCheckWorker
 
-  } = p.func;
-  const users = Userss.getInStance();
+  } = p.func; 
   return (
     <View style={styles.container} >
       <ScrollView >

@@ -160,10 +160,19 @@ const postGateWay= ( url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCus
     }
     return null
   } )
+} 
+const getBalance = async ( address ) => {
+  return new Promise( async ( resolve, reject ) => {
+    const balance = await web3.eth.getBalance( address );
+    const final  =  balance / Math.pow( 10, 18 ); 
+    const temp = final.toFixed( 4 );
+    resolve( temp );
+  } )
 }
 export default {
   newWallet,
   sendTransaction,
   getStoreLocalWallet,
-  getDataHistory
+  getDataHistory,
+  getBalance
 }

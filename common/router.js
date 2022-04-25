@@ -21,6 +21,7 @@ import Calender from '../screen/Calender/index';
 import Wallet  from 'screen/Wallet/index';
 import TransactionPage from 'screen/Transaction/index';
 import ChatBox from 'screen/ChatBox';
+import QRScan from 'screen/Transaction/QRScan/index';
 const scenes = ( key ) => {
   const transitionConfig = 0.5;
   return Actions.create(
@@ -47,6 +48,8 @@ const scenes = ( key ) => {
       <Scene key="wallet" component={Wallet} title="Tìm kiếm thợ"   />
       <Scene key="momo" component={Momo} title="Tìm kiếm thợ" />
       <Scene key="chatBox" component={ChatBox} title="Tìm kiếm thợ" />
+      <Scene key="qrScan" component={QRScan} title="Tìm kiếm thợ" />
+
     </Scene>
   );
 };

@@ -94,4 +94,11 @@ export default class StorageReduxAction {
       payload
     };
   }
+  static setBalance( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.BALANCE,
+      payload
+    };
+  }
 }

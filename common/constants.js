@@ -18,7 +18,8 @@ export const KEY_PAGE = {
   WALLET: 'WALLET',
   TOKEN : 'TOKEN',
   LIST_CHAT: 'LIST_CHAT',
-  HISTORY:'HISTORY'
+  HISTORY:'HISTORY',
+  BALANCE:'BALANCE'
 };
 
 export default Title = {

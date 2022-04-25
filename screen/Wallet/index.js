@@ -25,10 +25,14 @@ class wallet extends Base {
   }
 
   async componentDidMount() {
-    const {user} = this.props;
+    const {user, setBalance} = this.props;
     this.setState( {
       walletUser : user.addressWallet
+    
     } )
+    await setBalance( await ClassWeb3.getBalance( user.addressWallet ) );
+    console.log( 'wallet',user.addressWallet );
+    console.log( 'wallet',this.state.balance );
 
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
@@ -85,13 +89,15 @@ const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
   wallet: state.wallet,
-  token: state.token
+  token: state.token,
+  balance: state.balance
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
   setWallet: bindActionCreators( ActionStore.setWallet, dispatch ),
-  setToken: bindActionCreators( ActionStore.setToken, dispatch )
+  setToken: bindActionCreators( ActionStore.setToken, dispatch ),
+  setBalance: bindActionCreators( ActionStore.setBalance, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( wallet );

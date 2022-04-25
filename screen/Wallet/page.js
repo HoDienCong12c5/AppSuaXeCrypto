@@ -24,8 +24,9 @@ const page = ( p ) => {
     onNexTransaction,
     onChangeToken
   } = p.func;
-  const { walletUser, amount, isETH } = p.state; 
-  const {token} = p.props;
+  const { walletUser, amount  } = p.state; 
+
+  const {token, balance} = p.props;
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
   const listBtn=[
@@ -58,7 +59,7 @@ const page = ( p ) => {
               </CheckBox>
             </View>
             <View style={styles.containerSupport}>
-              <Text style={styles.amount}>{In18.web3.amount}: {amount} {token ?'ETH' :' TOMO'} </Text>
+              <Text style={styles.amount}>{In18.web3.amount}: {balance} {token ?'ETH' :' TOMO'} </Text>
             </View>
           </View>
           <View style={styles.containerNewTransaction}>
