@@ -11,7 +11,7 @@ import QRScan from './QRScan';
 export default function page( p ) {
   const {amount, toAdd, isShowPopup  } = p.state;
   const { 
-    openPopup,
+    openPopupQRSCan,
     onChangeAmount,
     onChangeToAddress,
     onPressSend,
@@ -41,7 +41,7 @@ export default function page( p ) {
                 </View>
                 <Button 
                   isShowText
-                  onPress={openPopup}
+                  onPress={openPopupQRSCan}
                   icon={Img.Image.iconQR}
                   styleBtn={styles.qr}
                 />

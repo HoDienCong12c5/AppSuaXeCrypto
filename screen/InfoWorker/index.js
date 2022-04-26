@@ -46,7 +46,6 @@ class InfoWorker extends Base {
       close={this.closeModal}
       onSubMit={this.submitSetUpCalender}
       sdtWorker={item.sdt}/>;
-    console.log( this.popup );
     this.openModal();
   }
 

@@ -40,8 +40,12 @@ class wallet extends Base {
   }
 
   onPressCreate=async() => {
-    const {user} = this.props;
+    const {user, setUser} = this.props;
     const walletNew = await ClassWeb3.newWallet();
+    user.addressWallet = walletNew.address;
+    user.privateKey = walletNew.privateKey;
+    setUser( user );
+
     console.log( 'walletNew',await walletNew );
     await SaveProfile( user.id, 8,walletNew );
     this.setState( {
