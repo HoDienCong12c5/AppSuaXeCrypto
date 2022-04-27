@@ -86,7 +86,7 @@ const sendTransaction=async( privateKey, to, value )=>{
       gasPrice,
       value
     }
-    resolve( estimateGasTxs( rawTransaction ).then( async ( gas ) => {
+    await estimateGasTxs( rawTransaction ).then( async ( gas ) => {
       console.log( 'gas', gas );
       let gasLimit = await web3.utils.numberToHex( ( gas ) )
       rawTransaction.gasLimit=gasLimit
@@ -107,7 +107,7 @@ const sendTransaction=async( privateKey, to, value )=>{
       } )
   
   
-    } ) ) 
+    } ) 
   } )
   
 }

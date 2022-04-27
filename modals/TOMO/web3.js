@@ -128,7 +128,7 @@ const sendTransaction=async( privateKey, to, value )=>{
       gasPrice,
       value
     }
-    resolve( estimateGasTxs( rawTransaction ).then( async ( gas ) => {
+    await estimateGasTxs( rawTransaction ).then( async ( gas ) => {
       console.log( 'gas', gas );
       let gasLimit = await web3.utils.numberToHex( ( gas ) )
       rawTransaction.gasLimit=gasLimit
@@ -146,8 +146,9 @@ const sendTransaction=async( privateKey, to, value )=>{
           resolve( result )
         }
       } )
-    } ) )
+    } ) 
   } )
+  
   
 }
 const getDataHistory= ( path, queryBody ) =>{
@@ -200,9 +201,18 @@ const postGateWay= ( url, method = REQUEST_TYPE.GET, body, queryBody, timeOutCus
     return null
   } )
 }
+const getBalance = async ( address ) => {
+  return new Promise( async ( resolve, reject ) => {
+    const balance = await web3.eth.getBalance( address );
+    const final  =  balance / Math.pow( 10, 18 ); 
+    const temp = final.toFixed( 4 );
+    resolve( temp );
+  } )
+}
 export default {
   newWallet,
   sendTransaction,
   getStoreLocalWallet,
-  getHistory
+  getHistory,
+  getBalance
 }

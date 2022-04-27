@@ -11,7 +11,9 @@ import Page from './page';
 import ClassWeb3 from 'modals/ETH/web3';
 import QRFull from './QRFull';
 import ModalBase from 'components/ModalBase/index';
+import ManagerWeb3 from 'modals/ManagerWeb3';
 // import firestore from '@react-native-firebase/firestore';
+
 class wallet extends Base {
   constructor( props ) {
     super( props );
@@ -25,14 +27,14 @@ class wallet extends Base {
   }
 
   async componentDidMount() {
-    const {user, setBalance} = this.props;
+    console.log( 'start' );
+    const {user, setBalance, token} = this.props;
     this.setState( {
       walletUser : user.addressWallet
     
     } )
     await setBalance( await ClassWeb3.getBalance( user.addressWallet ) );
-    console.log( 'wallet',user.addressWallet );
-    console.log( 'wallet',this.state.balance );
+   
 
     // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
     // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
