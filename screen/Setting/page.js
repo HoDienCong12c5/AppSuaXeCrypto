@@ -32,13 +32,13 @@ const page = ( p ) => {
             styleBtn={styles.styleBtnSetting}
             onPress={() => onPressActions( 0 )}></Buttons>
         
-          <Buttons
+          {/* <Buttons
             isFontWeight
             styleIcon={styles.iconButton}
             icon={Img.Image.statistical}
             title={In18.NormalTitle.statistical}
             styleBtn={styles.styleBtnSetting}
-            onPress={() => onPressActions( 1 )}></Buttons>
+            onPress={() => onPressActions( 1 )}></Buttons> */}
           <View style={styles.containerCalender}>
             <Buttons
               isFontWeight

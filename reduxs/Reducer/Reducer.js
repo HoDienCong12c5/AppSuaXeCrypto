@@ -67,5 +67,11 @@ export const balance = createReducer( initState.numberInit, {
     return action.payload;
   }
 } );
+export const rpc = createReducer( initState.numberInit, {
+  [KEY_PAGE.BALANCE]( state, action ) {
+    return action.payload;
+  }
+} );
+
 
 

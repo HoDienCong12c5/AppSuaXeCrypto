@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   setLocationUser, getAllListWorker, getListWorkerQuality, getListWorkerNearLimit,
-  PlayMusic
+  PlayMusic, setStoreLocals, getStoreLocals
 } from 'modals/function';
 import { PermissionsAndroid, Platform } from 'react-native';
 import ActionStore from 'reduxs/Action/ActionStore';
@@ -33,7 +33,12 @@ class Home extends Base {
   async componentDidMount() {
     await this.onWaitingNotification();
     const {
-      setListWorker, setListQualityWorker, user, setUser, setListNearWorkerLimit
+      setListWorker, 
+      setListQualityWorker, 
+      user, setUser, 
+      setListNearWorkerLimit,
+      setHistory,
+      history
     } = this.props;
     let list = [];
     Geolocation.getCurrentPosition(
@@ -57,6 +62,12 @@ class Home extends Base {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
+    const h = await getStoreLocals( 'history' );
+    await getStoreLocals( 'history' ).then( ( data ) => setHistory( data ) );
+    console.log( 'history',await h );
+    console.log( 'history',await history );
+    
+
   }
 
   onWaitingNotification = async ( ) => {
@@ -153,7 +164,8 @@ const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
   listWorker: state.listWorker,
-  message: state.message
+  message: state.message,
+  history: state.history
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
@@ -162,6 +174,7 @@ const mapDispatchToProps = ( dispatch ) => ( {
   setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
   setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
   setListNearWorkerLimit: bindActionCreators( ActionStore.setListNearWorkerLimit, dispatch ),
-  setMessage: bindActionCreators( ActionStore.setMessage, dispatch )
+  setMessage: bindActionCreators( ActionStore.setMessage, dispatch ),
+  setHistory: bindActionCreators( ActionStore.setHistory, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Home );

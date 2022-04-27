@@ -24,15 +24,15 @@ class Setting extends Base {
     // const send = await ClassWeb3.newWallet()
     // console.log( 'ClassWeb3.sendTransaction', send ); 
     // await ClassWeb3.sendTransaction( privateKey, toAdd,0.00001 )
-    // const { user, calender, setCalender } = this.props;
-    // const list = await getLisBill( user.sdt );
-    // let count = 0;
-    // list.map( ( item ) => {
-    //   if ( item.status == 0 ) {
-    //     count++;
-    //   }
-    // } );
-    // setCalender( count );
+    const { user, calender, setCalender } = this.props;
+    const list = await getLisBill( user.sdt );
+    let count = 0;
+    list.map( ( item ) => {
+      if ( item.status == 0 ) {
+        count++;
+      }
+    } );
+    setCalender( count );
   }
 
   onPressLogOut=() => {

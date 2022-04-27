@@ -11,7 +11,7 @@ export default function index( props ) {
   const {
     item, submit, isWorker, sdtUser, seenInfor
   } = props;
-  const { date } = item;
+  const { date , dateEnd} = item;
   const person = sdtUser == item.sdtCustomer ? 'Thợ' : 'Khách';
   const sdt = sdtUser == item.sdtCustomer ? item.sdtWorker : item.sdtCustomer;
   console.log( isWorker );
@@ -27,6 +27,10 @@ export default function index( props ) {
         <View style={styles.containerItemDetail}>
           <Image url={Img.Image.iconCalender2} style={styles.icon } ></Image>
           <Text style={styles.dateAndStatus}> {date} </Text>
+        </View>
+        <View style={styles.containerItemDetail}>
+          <Image url={Img.Image.iconDateEnd} style={styles.icon } ></Image>
+          <Text style={[styles.dateAndStatus, {fontWeight:'bold'}]}> {dateEnd} </Text>
         </View>
         <View style={styles.containerItemDetail}>
           <Image url={Img.Image.iconAddress2} style={styles.icon }></Image>

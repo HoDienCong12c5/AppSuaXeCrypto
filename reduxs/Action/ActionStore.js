@@ -101,4 +101,11 @@ export default class StorageReduxAction {
       payload
     };
   }
+  static setRPC( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.RPC,
+      payload
+    };
+  }
 }

@@ -330,7 +330,7 @@ export const getLisBill = async ( sdtUser, checkWorker ) => {
                   note: datas.note,
                   date: datas.date,
                   status: datas.status,
-                  dataEnd: datas.dateEnd,
+                  dateEnd: datas.dateEnd,
                   address: datas.address,
                   privateKey: datas.privateKey,
                   addressWallet: datas.addressWallet
@@ -397,7 +397,8 @@ export const getLisBillDoing = async ( sdtUser, checkWorker ) => {
                   date: datas.date,
                   status: datas.status,
                   buoiHen: datas.buoiHen,
-                  address: datas.address
+                  address: datas.address,
+                  dateEnd: datas.dateEnd
                 };
                 list.push( temp );
               }
@@ -412,7 +413,8 @@ export const getLisBillDoing = async ( sdtUser, checkWorker ) => {
                 date: datas.date,
                 status: datas.status,
                 buoiHen: datas.buoiHen,
-                address: datas.address
+                address: datas.address,
+                dateEnd: datas.dateEnd
               };
               list.push( temp );
             } else {
@@ -426,7 +428,8 @@ export const getLisBillDoing = async ( sdtUser, checkWorker ) => {
                 status: datas.status,
                 buoiHen: datas.buoiHen,
                 sdtCustomer: datas.sdtCustomer,
-                address: datas.address
+                address: datas.address,
+                dateEnd: datas.dateEnd
               };
               list.push( temp );
             }
@@ -615,9 +618,11 @@ export const getStoreLocals = async ( key ) => {
   return new Promise( async ( resolve, reject ) => {
     store.get( key ).then( ( res ) => { 
       if( res!=null ){
+        console.log( 'res',res );
         resolve( res );
       }
       else{
+        console.log( 'res','null' );
         resolve( null );
       }
     } );

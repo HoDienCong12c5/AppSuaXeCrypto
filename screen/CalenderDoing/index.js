@@ -36,6 +36,7 @@ class Bill extends Base {
       tempList: await getLisBillDoing( user.sdt, user.checkWorker ),
       isWorker: user.checkWorker == 1
     } );
+    console.log( this.state.listBill );
   }
 
   onPressOption= async ( type ) => {

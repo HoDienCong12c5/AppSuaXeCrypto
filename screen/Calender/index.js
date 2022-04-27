@@ -73,7 +73,7 @@ class Bill extends Base {
   }
 
   senNotification = async ( sdtCustomer, idBuild, dateEnd ) => {
-    const { user } = this.props;
+    const { user, setCalender, calender } = this.props;
     const isWorker = user.checkWorker == 1;
     await firestoreUser.get()
       .then( ( querySnapshot ) => {
@@ -82,6 +82,7 @@ class Bill extends Base {
           if ( datas.sdt == sdtCustomer ) {
             sendNotificationMess( datas.token, isWorker ? '3' : '4', user.sdt );
             updateBillDateEnd( idBuild, -1, isWorker ? 0 : 1, dateEnd );
+            setCalender( calender -1 )
           }
         } );
       } );
@@ -185,10 +186,12 @@ class Bill extends Base {
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
-  listWorker: state.listWorker
+  listWorker: state.listWorker,
+  calender: state.calender
 } );
 const mapDispatchToProps = ( dispatch ) => ( {
-  setUser: bindActionCreators( ActionStore.setUser, dispatch )
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+  setCalender: bindActionCreators( ActionStore.setCalender, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Bill );
 // export default Login;

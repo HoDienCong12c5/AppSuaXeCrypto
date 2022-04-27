@@ -17,21 +17,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const page = ( p ) => {
   const {
     onPressCreate,
-    onPressSend,
-    onPressScan,
-    onPressSubmitCheck,
     onPressQRFull,
     onNexTransaction,
     onChangeToken
   } = p.func;
-  const { walletUser, amount  } = p.state; 
+  const { walletUser  } = p.state; 
 
   const {token, balance} = p.props;
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
-  const listBtn=[
-  
-  ]
   return (
     <View style={styles.container} >
       <View style={styles.containerHeader}>

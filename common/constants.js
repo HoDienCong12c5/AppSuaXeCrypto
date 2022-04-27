@@ -19,7 +19,8 @@ export const KEY_PAGE = {
   TOKEN : 'TOKEN',
   LIST_CHAT: 'LIST_CHAT',
   HISTORY:'HISTORY',
-  BALANCE:'BALANCE'
+  BALANCE:'BALANCE',
+  RPC:'RPC'
 };
 
 export default Title = {
