@@ -18,7 +18,7 @@ import messaging from '@react-native-firebase/messaging';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-
+import BleManager from 'react-native-ble-manager';
 const firestores = firestore().collection( 'User' );
 class Login extends Base {
   constructor( props ) {
@@ -41,6 +41,15 @@ class Login extends Base {
     } );
   }
   async componentDidMount() { 
+    // await this.requestCameraPermission()
+    // await BleManager.start( { showAlert: false } ).then( () => {
+    //   // Success code
+    //   console.log( "Module initialized" );
+    // } );
+    // BleManager.scan( [], 5, true ).then( () => {
+    //   // Success code
+    //   console.log( "Scan started" );
+    // } );
     if ( Platform.OS === 'android' ) { 
       await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -65,7 +74,28 @@ class Login extends Base {
     //   } );
     // }
   }
-
+  requestCameraPermission = async () => {
+    try {
+      const granted4 = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.BLUETOOTH,
+        {
+          title: 'Example App',
+          message: 'Example App access to your location ',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK'
+        }
+      );
+      if ( granted4 === PermissionsAndroid.RESULTS.GRANTED ) {
+        console.log( 'You can use the BLUETOOTH' );
+      } else {
+        console.log( 'BLUETOOTH permission denied' );
+      }
+    } catch ( err ) {
+      console.log( err );
+      console.warn( err );
+    }
+  };
   saveLogin() {
     this.setState( {
       ...this.state,

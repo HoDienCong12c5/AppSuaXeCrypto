@@ -11,6 +11,7 @@ import React from 'react';
 import TOMO from 'modals/TOMO/web3';
 import ModalSending from 'components/ModalBase/index'
 import Img from 'assets/index'; 
+import {formatDateTimeToString } from 'modals/function';
 //class component
 class index extends Base {
   constructor( props ) {
@@ -56,8 +57,15 @@ class index extends Base {
 
   }
   sendingTransaction = async ( callback, amount, to ) => {
-    const { user} = this.props;
-    await TOMO.sendTransaction( user.privateKey,to, amount ).then( ()=>callback() )
+    let date = formatDateTimeToString( new Date(  ) ); 
+    const tem ={
+      amount: amount,
+      to: to, 
+      date: date
+    }
+    console.log( 'tem',tem );
+    
+    // await TOMO.sendTransaction( user.privateKey,to, amount ).then( ()=>callback() )
   }
   callback = async () => {
     console.log( 'callback' );
@@ -66,7 +74,7 @@ class index extends Base {
     } );
   }
   onPressSend = async () => {
-    const {toAdd, amount}=this.state
+    const {toAdd, amount}=this.state 
     if( toAdd.slice( 0, 2 )=='0x' && toAdd.length >=42 ){
       this.popup=<ModalSending 
         isShowBtn
@@ -87,7 +95,7 @@ class index extends Base {
           icon={Img.Image.icoLoading}
         />
         this.openModal();
-        // /await this.sendingTransaction( this.callback,amount,toAdd )
+        await this.sendingTransaction( this.callback,amount,toAdd )
       }
     }else{
       Alert.alert( 'Chưa đúng định dạng' )

@@ -74,34 +74,29 @@ const page = ( p ) => {
   };
   return (
     <View style={styles.container}>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* <Text>Chức năng</Text>
+     
+      {/* <Text>Chức năng</Text>
         <View style={styles.containerOption}>
           {
             // eslint-disable-next-line max-len
             listOptions.map( ( items, index ) => <OptionFunctions items={items} func={() => {}} key={index} ></OptionFunctions> )
           }
         </View> */}
-        <View style={styles.optionMenu}>
-          <Text style={styles.titleOption}>{In18.Options.quality}</Text>
-          <View style={styles.optionMenuDetail}>
-            <Text >chi tết</Text>
-            <IconButton
-              icon="arrow-right-bold"
-              onPress={() => onPressViewWorkerSort()}
-            >
-            </IconButton>
+      <View style={styles.optionMenu}>
+        <Text style={styles.titleOption}>{In18.Options.quality}</Text>
+        <View style={styles.optionMenuDetail}>
+          <Text >chi tết</Text>
+          <IconButton
+            icon="arrow-right-bold"
+            onPress={() => onPressViewWorkerSort()}
+          >
+          </IconButton>
 
-          </View>
         </View>
+      </View>
+      <View >
         <FlatList
-          data={listQuality}
-          contentContainerStyle={{
-            flexDirection: 'row'
-          }}
+          data={listQuality} 
           horizontal
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
@@ -110,34 +105,41 @@ const page = ( p ) => {
           ListEmptyComponent={<Emptydata />}
         >
         </FlatList>
-        <View style={styles.optionMenu}>
-          <Text style={styles.titleOption}>{In18.List.listSearch}</Text>
-          <View style={styles.optionMenuDetail}>
-            <Text >chi tết</Text>
-            <IconButton
-              icon="arrow-right-bold"
-              onPress={() => onPressViewList()}
-            >
-            </IconButton>
+      </View>
 
-          </View>
-
-        </View>
-
-        <View style={{ flex: 1 }}>
-          <FlatList
-            data={listAll}
-
-            renderItem={( item ) => renderItemWorker( item )}
-            keyExtractor={( item ) => item.id}
-            ListEmptyComponent={<Emptydata />}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            scrollEnabled={false}
+    
+      {/* <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      > */}
+      <View style={styles.optionMenu}>
+        <Text style={styles.titleOption}>{In18.List.listSearch}</Text>
+        <View style={styles.optionMenuDetail}>
+          <Text >chi tết</Text>
+          <IconButton
+            icon="arrow-right-bold"
+            onPress={() => onPressViewList()}
           >
-          </FlatList>
+          </IconButton>
+
         </View>
-      </ScrollView>
+
+      </View>
+
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={listAll}
+
+          renderItem={( item ) => renderItemWorker( item )}
+          keyExtractor={( item ) => item.id}
+          ListEmptyComponent={<Emptydata />}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          // scrollEnabled={false}
+        >
+        </FlatList>
+      </View>
+      {/* </ScrollView> */}
       <TouchableOpacity>
         <Image source={Img.Image.iconMessageBot} style={styles.messageBot} />
         

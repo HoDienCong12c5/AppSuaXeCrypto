@@ -38,17 +38,9 @@ class ManagerWeb3{
       return await Tomo.getBalance( address );
     }
   }
-}
-class Person extends Base{
-
-  constructor( props ) {
-    super( props );
+  static async getPrice( token ){
+    
   }
-
-  introduce() {
-    console.log( `Hello, my name is sdf` );
-  }
-
 }
 // const mapStateToProps = ( state ) => ( {
 //   token: state.user.token
