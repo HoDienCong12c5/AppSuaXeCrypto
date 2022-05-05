@@ -14,7 +14,8 @@ export default function index( props ) {
   const { date , dateEnd} = item;
   const person = sdtUser == item.sdtCustomer ? 'Thợ' : 'Khách';
   const sdt = sdtUser == item.sdtCustomer ? item.sdtWorker : item.sdtCustomer;
-  console.log( isWorker );
+  const isOnPress = sdtUser ==  item.sdtWorker 
+  console.log( 'isOnPress',isOnPress );
   return (
     <View style={styles.containerItem}>
       <View style={{ width: width( 68 ) }}>
@@ -44,13 +45,13 @@ export default function index( props ) {
         </View>
       </View>
       <View style={styles.right}>
-        <TouchableOpacity onPress={isWorker ? submit : null}>
+        <TouchableOpacity onPress={isOnPress ? submit : null}>
           <View>
             <Image
               style={styles.doing}
               url={Img.Image.iconQuestion}
             />
-            <Text style={{ textAlign: 'center', color: Colors.BLUE1 }}> Hoàn thành</Text>
+            <Text style={{ textAlign: 'center', color: Colors.BLUE1 }}> {isOnPress?'Hoàn thành':'Thợ đang làm'}</Text>
           </View>
         </TouchableOpacity>
       </View>

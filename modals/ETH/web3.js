@@ -174,5 +174,6 @@ export default {
   sendTransaction,
   getStoreLocalWallet,
   getDataHistory,
-  getBalance
+  getBalance,
+  getGasPrice
 }

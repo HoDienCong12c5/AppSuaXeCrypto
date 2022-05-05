@@ -20,14 +20,18 @@ export default function page( p ) {
     
 
   } = p.func;
-
+  const { balance} = p.props; 
   return (
     <View style={styles.container}>
       {
         !isShowPopup?(
           <>
             <View style={styles.body}>
-              <View style={styles.containerToAddress}>
+              <View style={styles.containerBalance}>
+                <Text style={[styles.textBalance, {fontWeight:'bold'}]}>Số dư :    </Text>
+                <Text style={styles.textBalance} >{balance} TOMO</Text>
+              </View>
+              <View style={styles.containerToAddress}> 
                 <View style={styles.containerInput}>
                   <Text style={styles.textTitle}>{In18.web3.toAddress}</Text>
                   <TextInput 
@@ -50,7 +54,7 @@ export default function page( p ) {
                 <View style={styles.containerInput}>
                   <Text style={styles.textTitle}>{In18.web3.amount}</Text>
                   <TextInput 
-                    onChangeText={( text )=>onChangeAmount( text )}
+                    onChangeText={onChangeAmount}
                     value={amount}
                     noIcon
                     style={styles.inputToAddress}

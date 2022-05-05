@@ -617,8 +617,7 @@ export const setLocationUser = async ( idUser, x, y ) => {
 export const getStoreLocals = async ( key ) => {
   return new Promise( async ( resolve, reject ) => {
     store.get( key ).then( ( res ) => { 
-      if( res!=null ){
-        console.log( 'res',res );
+      if( res!=null ){ 
         resolve( res );
       }
       else{

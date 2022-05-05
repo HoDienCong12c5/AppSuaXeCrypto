@@ -8,9 +8,10 @@ import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
-import ClassWeb3 from 'modals/ETH/web3';
+import ClassWeb3 from 'modals/ManagerWeb3/index';
 import QRFull from './QRFull';
 import ModalBase from 'components/ModalBase/index';
+import { token } from 'reudxs/Reducer/Reducer';
 // import firestore from '@react-native-firebase/firestore';
 class wallet extends Base {
   constructor( props ) {
@@ -25,17 +26,11 @@ class wallet extends Base {
   }
 
   async componentDidMount() {
-    const {user, setBalance} = this.props;
+    const {user, setBalance, token} = this.props;
     this.setState( {
-      walletUser : user.addressWallet
-    
+      walletUser : user.addressWallet 
     } )
-    await setBalance( await ClassWeb3.getBalance( user.addressWallet ) );
-    console.log( 'wallet', user.addressWallet );
-
-    // const privateKey ='0xeed0b9d34c105ab1867778ab7ee5781d87601e783626a3bbb79155822eca4b5b'
-    // const send = await ClassWeb3.sendTransaction( dataWallet, dataWallet.address, 1000000000000);
-    // console.log( 'send', send );
+    await setBalance( await ClassWeb3.getBalance( user.addressWallet, token ) ); 
   }
 
   onPressCreate=async() => {
@@ -63,6 +58,12 @@ class wallet extends Base {
   onChangeToken =async (  ) => {
     const { setToken, token } = this.props;
     await setToken( !token )
+    const {user, setBalance} = this.props;
+    this.setState( {
+      walletUser : user.addressWallet 
+    } )
+    await setBalance( await ClassWeb3.getBalance( user.addressWallet, !token ) ); 
+    console.log( 'setToken',token );
 
   }
   onPressQRFull = () => {
@@ -71,7 +72,8 @@ class wallet extends Base {
     this.openModal()
   }
   onNexTransaction = () => {
-    const { setToken, token } = this.props;
+    const { setToken, token } = this.props; 
+    // console.log( 'amount',balance );
     Actions.transactionNew( {nameToke :token} )
   }
   render() {

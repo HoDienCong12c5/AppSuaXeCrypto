@@ -214,5 +214,8 @@ export default {
   sendTransaction,
   getStoreLocalWallet,
   getHistory,
-  getBalance
+  getBalance,
+  getGasPrice,
+  convertBalanceToWei
+
 }

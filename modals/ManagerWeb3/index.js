@@ -18,6 +18,8 @@ class ManagerWeb3{
         // resolve ( await Eth.sendTransaction( privateKey, to, value ) ) 
         // resolve( 'ok' )
       }else{
+        console.log( 'tomo' );
+
         Tomo.sendTransaction( privateKey, to, value ).then( ( res ) => {
           resolve( res )
         } )
@@ -28,6 +30,8 @@ class ManagerWeb3{
     if( token ){
       return await Eth.newWallet();
     }else{
+      console.log( 'tomo' );
+
       return await Tomo.newWallet();
     }
   }
@@ -35,11 +39,29 @@ class ManagerWeb3{
     if( token ){
       return await Eth.getBalance( address );
     }else{
+      console.log( 'tomo' );  
       return await Tomo.getBalance( address );
     }
   }
-  static async getPrice( token ){
-    
+  static async getGasPrice( token ){
+    if( token ){
+      return await Eth.getGasPrice();
+    }else{
+      console.log( 'tomo' );
+      return await Tomo.getGasPrice();
+    }
+  }
+  //convertBalanceToWei
+  static  async  checkAmount( token, value, balance ){ 
+    value= Tomo.convertBalanceToWei( value );
+    const total =parseInt( value ) +parseInt( await this.getGasPrice( token ) );
+    console.log( 'total', total );
+    console.log( 'value', value );
+    console.log( 'balance',  Tomo.convertBalanceToWei( balance ) );
+    return new Promise( ( resolve, reject ) => {
+      resolve( Tomo.convertBalanceToWei( balance )>= total )
+    } )
+   
   }
 }
 // const mapStateToProps = ( state ) => ( {

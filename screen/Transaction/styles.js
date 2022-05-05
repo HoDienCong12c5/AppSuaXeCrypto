@@ -4,7 +4,8 @@ import { width, height } from "common/styles"
 const styles = StyleSheet.create( {
   container:{
     flex:1,
-    width:width( 100 )  
+    width:width( 100 )  ,
+    marginTop:20
     // paddingHorizontal:15,
     // paddingVertical:5
   },  
@@ -43,7 +44,7 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     borderBottomWidth:1,
     borderBottomColor:Colors.ORANGE,
-    marginTop:28
+    marginTop:20
   },
   containerInput:{
     flex: 7,
@@ -75,6 +76,16 @@ const styles = StyleSheet.create( {
     fontSize:16,
     fontWeight:'bold'
     // marginLeft:10
+  },
+  containerBalance:{
+    flexDirection:'row',
+    borderBottomWidth:1,
+    paddingBottom:10, 
+    // width:width( 100 ),
+    borderColor:Colors.YELLOW
+  },
+  textBalance:{
+    fontSize:18
   }
 } )
 export default styles

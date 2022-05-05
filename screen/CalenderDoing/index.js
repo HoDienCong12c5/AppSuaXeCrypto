@@ -90,19 +90,23 @@ class Bill extends Base {
     const { tempList, type } = this.state;
     const { user } = this.props;
     const isWorker = user.checkWorker == 1;
+    console.log( 'isWorker', isWorker );
     for ( let i = 0; i < tempList.length; i++ ) {
       if ( tempList[i].id == item.id ) {
         this.getListView( type );
         this.senNotification( isWorker ? tempList[i].sdtCustomer : tempList[i].sdtWorker, tempList[i].id );
         if ( isWorker ) {
           tempList[i].status = 1;
-        } else {
           tempList.splice( i, 1 );
+          this.setState( {
+            tempList: tempList
+          } );
+          this.closeModal();
           return;
-        }
+        } 
       }
     }
-    this.closeModal();
+
   }
 
   onPressSuccess= ( item ) => {

@@ -72,6 +72,11 @@ export const rpc = createReducer( initState.numberInit, {
     return action.payload;
   }
 } );
+export const history = createReducer( initState.list, {
+  [KEY_PAGE.HISTORY]( state, action ) {
+    return action.payload;
+  }
+} );
 
 
 

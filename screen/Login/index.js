@@ -11,14 +11,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import {
-  setStoreLocal, getStoreLocal, getToken, updateToken
+  setStoreLocal, setStoreLocals, getStoreLocals, updateToken
 } from 'modals/function';
 import ActionStore from 'reduxs/Action/ActionStore';
 import messaging from '@react-native-firebase/messaging';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import BleManager from 'react-native-ble-manager';
+import Loading from 'components/Loading'
 const firestores = firestore().collection( 'User' );
 class Login extends Base {
   constructor( props ) {
@@ -41,38 +41,15 @@ class Login extends Base {
     } );
   }
   async componentDidMount() { 
-    // await this.requestCameraPermission()
-    // await BleManager.start( { showAlert: false } ).then( () => {
-    //   // Success code
-    //   console.log( "Module initialized" );
-    // } );
-    // BleManager.scan( [], 5, true ).then( () => {
-    //   // Success code
-    //   console.log( "Scan started" );
-    // } );
     if ( Platform.OS === 'android' ) { 
       await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
       );
     }
-    const testPromis=await getStoreLocal( 'user' )
-    console.log( await testPromis.sdt );
-    await this.setLocalUser(  testPromis.sdt,  testPromis.pass );
-    // if ( user == null ) {
-    //   store.get( 'user' ).then( async ( res ) => {
-    //     await setUser( res[0] );
-    //     this.setState( {
-    //       txtSDT: res[0].sdt,
-    //       txtPass: res[0].pass
-    //     } );
-    //   } );
-    // } else {
-    //   await setStoreLocal( user );
-    //   await this.setState( {
-    //     txtSDT: user.sdt,
-    //     txtPass: user.pass
-    //   } );
-    // }
+    const testPromis=await getStoreLocals( 'user' )
+    if( testPromis!=null ){
+      await this.setLocalUser(  testPromis.sdt,  testPromis.pass );
+    }
   }
   requestCameraPermission = async () => {
     try {
@@ -111,6 +88,8 @@ class Login extends Base {
     const { user, setUser } = this.props;
     let i = 0;
     const list = [];
+    this.popup=<Loading title='Đang kiểm tra'/>
+    this.openModal()
     await firestores.get()
       .then( ( querySnapshot ) => { 
         querySnapshot.forEach( async ( documentSnapshot ) => {
@@ -136,15 +115,13 @@ class Login extends Base {
                   privateKey: datas.privateKey,
                   addressWallet: datas.addressWallet
                 };
-                console.log( temp );
-                await updateToken( documentSnapshot.id, token );
-              
-                if ( this.state.saveLogin ) {
-                  await setStoreLocal( temp );
-                }
-                await setStoreLocal( temp );
+                console.log( 'temp', temp );
+                await updateToken( documentSnapshot.id, token ); 
+                await setStoreLocals( 'user', temp );
                 await setUser( temp ); 
+               
                 await Actions.home();
+                this.closeModal()
               } );
           }
         } );
