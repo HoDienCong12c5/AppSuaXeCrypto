@@ -153,7 +153,8 @@ export default Title = {
     receive:'Nhận tiền',
     amount:'Số Token (coin)',
     toAddress:'Địa chỉ nhận',
-    sending:'Đang gửi'
+    sending:'Đang gửi',
+    address:'Địa chỉ'
 
   }
 };

@@ -57,6 +57,7 @@ class index extends Base {
 
   }
   sendingTransaction = async ( callback, amount, to ) => {
+    const {setHistory, history} = this.props;
     let date = formatDateTimeToString( new Date(  ) ); 
     const tem ={
       amount: amount,
@@ -64,7 +65,12 @@ class index extends Base {
       date: date
     }
     console.log( 'tem',tem );
-    
+    if( !history ){
+      setHistory( tem );
+    }else{
+      history.add( tem );
+      setHistory( history );
+    }
     // await TOMO.sendTransaction( user.privateKey,to, amount ).then( ()=>callback() )
   }
   callback = async () => {
@@ -125,10 +131,12 @@ class index extends Base {
   }
 }
 const mapStateToProps = ( state ) => ( {
-  user: state.user
+  user: state.user,
+  history: state.history
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
-  setUser: bindActionCreators( ActionStore.setUser, dispatch )
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+  setHistory: bindActionCreators( ActionStore.setHistory, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( index ); 

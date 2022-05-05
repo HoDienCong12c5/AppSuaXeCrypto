@@ -1,4 +1,4 @@
-import { checkStore } from 'modals/function';
+import { checkStore, setStoreLocals } from 'modals/function';
 import { MENU, KEY_PAGE } from 'common/constants';
 
 export default class StorageReduxAction {
@@ -11,7 +11,7 @@ export default class StorageReduxAction {
   }
 
   static setUser( payload ) {
-    checkStore( 'user', payload );
+    // checkStore( 'user', payload );
     return {
       type: MENU.USER,
       payload
@@ -27,7 +27,7 @@ export default class StorageReduxAction {
   }
 
   static setListNearWorkerLimit( payload ) {
-    checkStore( KEY_PAGE.SET_LIST_NEAR, payload );
+    // checkStore( KEY_PAGE.SET_LIST_NEAR, payload );
     return {
       type: KEY_PAGE.SET_LIST_NEAR,
       payload
@@ -88,7 +88,7 @@ export default class StorageReduxAction {
     };
   }
   static setHistory( payload ) {
-    // checkStore( 'user', payload );
+    setStoreLocals(  KEY_PAGE.HISTORY, payload );
     return {
       type: KEY_PAGE.HISTORY,
       payload

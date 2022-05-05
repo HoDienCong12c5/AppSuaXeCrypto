@@ -20,7 +20,7 @@ export default function page( p ) {
     
 
   } = p.func;
-  
+  const { history } = p.props;
   return (
     <View style={styles.container}>
       {
