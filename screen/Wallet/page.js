@@ -23,7 +23,7 @@ const page = ( p ) => {
   } = p.func;
   const { walletUser  } = p.state; 
 
-  const {token, balance} = p.props;
+  const {token, balance, history} = p.props;
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
   const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
   return (
