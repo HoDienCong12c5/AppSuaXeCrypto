@@ -11,16 +11,8 @@ import styles from './styles';
 
 export default function index( props ) {
   const { user, worker } = props;
-  const [coordinates] = useState( [
-    {
-      latitude: user.x,
-      longitude: user.y
-    },
-    {
-      latitude: parseFloat( worker.x ),
-      longitude: parseFloat( worker.y )
-    }
-  ] );
+  console.log( 'user', user );
+  console.log( 'worker', worker );
   return (
     <View>
       <MapView

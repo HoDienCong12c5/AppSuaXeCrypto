@@ -291,6 +291,7 @@ export const getListWorkerNearLimit = ( list ) => {
         }
       }
       if ( list[i].distance < 20 ) {
+        console.log( 'list[i].distance ', list[i].distance );
         listFinal.push( list[i] );
       }
     }

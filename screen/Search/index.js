@@ -24,19 +24,19 @@ class Search extends Base {
   }
 
   async componentDidMount() {
-    const { listQualityWorker } = this.props;
+    const { listWorkerNearLimit } = this.props;
     this.setState( {
-      list: await listQualityWorker,
-      listWorkerNear: await getListWorkerNear( listQualityWorker )
+      list: await listWorkerNearLimit,
+      listWorkerNear: await listWorkerNearLimit
     } );
   }
 
   onChangeType = async ( types ) => {
-    const { listQualityWorker } = this.props;
+    const { listWorkerNearLimit } = this.props;
     if ( types === 0 ) {
       console.log( this.state.listWorker );
       this.setState( {
-        list: listQualityWorker,
+        list: listWorkerNearLimit,
         currentIndex: 0,
         type: 0,
         isShowMap: false

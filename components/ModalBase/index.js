@@ -68,8 +68,8 @@ const styles = StyleSheet.create( {
   },
   iconWarning: {
     height: height( 10 ),
-    width: height( 10 ),
-    marginLeft: width( 5 )
+    width: height( 10 ), 
+    alignSelf: 'center'
   },
   title: {
     fontSize: 25,

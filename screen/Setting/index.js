@@ -1,13 +1,15 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register, getLisBill,getStoreLocals } from 'modals/function';
+import { Register, getLisBill,getStoreLocals, setStoreLocals } from 'modals/function';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
+import ModalWarning from 'components/ModalBase';
+import { promises } from 'stream';
 class Setting extends Base {
   constructor( props ) {
     super( props );
@@ -36,9 +38,23 @@ class Setting extends Base {
   }
 
   onPressLogOut=() => {
-
+    this.popup = <ModalWarning
+      titleBtnSuccess="Đăng xuất"
+      description='Bạn có muốn đăng xuất'
+      onPressSuccess={this.logOut}
+      onPressClose={this.closeModal}
+    />
+    this.openModal();
   }
+  logOut = async () => {
+    console.log( 'logouts' );
+    const {setMenuFooter } = this.props; 
+    Actions.login(); 
+    await setMenuFooter( 'HOME' ); 
+    await setStoreLocals( 'user', null );
 
+    this.closeModal()
+  }
   onPressActions= ( type ) => {
     switch ( type ) {
     case 0:

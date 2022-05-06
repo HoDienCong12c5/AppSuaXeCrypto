@@ -20,6 +20,38 @@ import In18 from '../../common/constants';
 import Page from './page';
 import Loading from 'components/Loading'
 const firestores = firestore().collection( 'User' );
+//--------------------------
+const API_URL = 'https://eth-kovan.alchemyapi.io/v2/UjRWONGpkjgquvrF6M0QFWVcOZVcyp6e';
+const Web3 = require( 'web3' );
+let web3 = new Web3( new Web3.providers.HttpProvider( API_URL ) );
+import axios from 'axios';
+const getH= async ( address ) => {
+  // var http = require( "https" ); 
+  // var options = {
+  //   "method": "GET",
+  //   "hostname": "rpc.tomochain.com",
+  //   "port": null,
+  //   "path": `/api/txs/listByAccount/${address}`,
+  //   "headers": {}
+  // };
+
+  // var req = http.request( options, function ( res ) {
+  //   var chunks = [];
+
+  //   res.on( "data", function ( chunk ) {
+  //     chunks.push( chunk );
+  //   } );
+
+  //   res.on( "end", function () {
+  //     var body = Buffer.concat( chunks );
+  //     console.log( body.toString() );
+  //   } );
+  // } );
+
+  // req.end();
+} 
+//---------------------------
+const ADD='0x320C8531b18892431B1dC7d899007590a8764E49'
 class Login extends Base {
   constructor( props ) {
     super( props );
@@ -41,6 +73,8 @@ class Login extends Base {
     } );
   }
   async componentDidMount() { 
+
+    await getH( ADD )
     if ( Platform.OS === 'android' ) { 
       await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
