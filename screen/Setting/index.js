@@ -10,6 +10,8 @@ import In18 from '../../common/constants';
 import Page from './page'; 
 import ModalWarning from 'components/ModalBase';
 import { promises } from 'stream';
+import store from 'react-native-simple-store';
+
 class Setting extends Base {
   constructor( props ) {
     super( props );
@@ -48,10 +50,15 @@ class Setting extends Base {
   }
   logOut = async () => {
     console.log( 'logouts' );
-    const {setMenuFooter } = this.props; 
+    const {setMenuFooter, setHistory } = this.props; 
     Actions.login(); 
     await setMenuFooter( 'HOME' ); 
     await setStoreLocals( 'user', null );
+    await setHistory( [] );
+    await store.delete( 'user' );
+    await store.delete( 'history' );
+    
+
 
     this.closeModal()
   }
@@ -99,6 +106,7 @@ const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
   setCalender: bindActionCreators( ActionStore.setCalender, dispatch ),
-  setCalenderDoing: bindActionCreators( ActionStore.setCalenderDoing, dispatch )
+  setCalenderDoing: bindActionCreators( ActionStore.setCalenderDoing, dispatch ),
+  setHistory: bindActionCreators( ActionStore.setHistory, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Setting );

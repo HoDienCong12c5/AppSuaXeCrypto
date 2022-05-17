@@ -12,6 +12,9 @@ import ClassWeb3 from 'modals/ManagerWeb3/index';
 import QRFull from './QRFull';
 import ModalBase from 'components/ModalBase/index';
 import { token } from 'reudxs/Reducer/Reducer';
+import Loading from 'components/Loading'
+import store from 'react-native-simple-store';
+
 // import firestore from '@react-native-firebase/firestore';
 class wallet extends Base {
   constructor( props ) {
@@ -20,17 +23,20 @@ class wallet extends Base {
     this.state = {
       isLoad:false,
       walletUser:'',
-      amount:'0'
+      amount:'0',
+      isChanging:false
     }
     
   }
 
   async componentDidMount() {
-    const {user, setBalance, token} = this.props;
+    const {user, setBalance, token, history} = this.props;
+    console.log( 'history', history );
     this.setState( {
       walletUser : user.addressWallet 
     } )
     await setBalance( await ClassWeb3.getBalance( user.addressWallet, token ) ); 
+    // await store.delete( 'history' )
   }
 
   onPressCreate=async() => {
@@ -55,15 +61,34 @@ class wallet extends Base {
   onPressSubmitCheck = ( address ) => {
    
   };
-  onChangeToken =async (  ) => {
-    const { setToken, token } = this.props;
-    await setToken( !token )
-    const {user, setBalance} = this.props;
+  async useCallbackChanging(){
     this.setState( {
-      walletUser : user.addressWallet 
-    } )
-    await setBalance( await ClassWeb3.getBalance( user.addressWallet, !token ) ); 
-    console.log( 'setToken',token );
+      isChanging:!this.state.isChanging
+    } ) 
+  }
+ 
+
+
+  onChangeToken =async (  ) => {
+    const { setToken, token } = this.props; 
+    if( this.state.walletUser ){
+      this.popup= <Loading title='Đang chuyển mạng lưới'/>
+      await setToken( !token )
+      const {user, setBalance} = this.props;
+      this.setState( {
+        walletUser : user.addressWallet 
+      } )
+      await this.useCallbackChanging()
+      await this.openModal() 
+      await setBalance( await ClassWeb3.getBalance( user.addressWallet, !token ) ); 
+      console.log( 'setToken',token );
+      await this.useCallbackChanging()
+      await this.closeModal()
+    }
+    else{
+      Alert.alert( 'Cảnh báo', 'Vui lòng tạo ví trước khi chuyển mạng lưới' )
+    }
+    
 
   }
   onPressQRFull = () => {
@@ -95,7 +120,8 @@ const mapStateToProps = ( state ) => ( {
   user: state.user,
   wallet: state.wallet,
   token: state.token,
-  balance: state.balance
+  balance: state.balance,
+  history: state.history
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {

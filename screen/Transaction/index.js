@@ -1,6 +1,6 @@
 import { View, Text, Alert , TouchableOpacity} from 'react-native'
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register, getStoreLocals } from 'modals/function';
+import { setStoreLocals, getStoreLocals, sendNotificationMess } from 'modals/function';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
@@ -13,6 +13,9 @@ import Loading from 'components/Loading'
 import Img from 'assets/index'; 
 import Web3Class from 'modals/ManagerWeb3/index'
 import {formatDateTimeToString } from 'modals/function';
+
+import firestore from '@react-native-firebase/firestore';
+import { isBuffer } from '@walletconnect/utils';
 //class component
 const HISTORY ='HISTORY'
 class index extends Base {
@@ -21,7 +24,7 @@ class index extends Base {
     this.page = Page;
     this.state = {
       sdt: '',
-      toAdd: '0x320C8531b18892431B1dC7d899007590a8764E49',
+      toAdd: '',
       isShowPopup: false,
       isSending: false,
       amount:0
@@ -77,20 +80,12 @@ class index extends Base {
   sendingTransaction = async ( callback, amount, to ) => {
     const {setHistory, history, user, token} = this.props;
     let date = formatDateTimeToString( new Date(  ) ); 
-    const tem ={
-      amount: amount,
-      to: to, 
-      date: date
-    }
-    if( !history ){
-      const tempList = [];
-      tempList.push( tem ); 
-      setHistory( tempList );
-    }else{
-      history.push( tem );
-      setHistory( history );
-    }
-    await Web3Class.sendTransaction( user.privateKey,to, amount, token ).then( ()=>callback() ) 
+    await Web3Class.sendTransaction( user.privateKey,to, amount, token ).then( async ( result )=>{
+      console.log( 'result- sended', result );
+      
+      callback()
+      await this.sendNotiTransaction( user.sdt,to, amount )
+    } ) 
   }
   callback = async () => {
     console.log( 'callback' );
@@ -100,16 +95,73 @@ class index extends Base {
     this.closeModal();
     Alert.alert( 'Gửi thành công' )
   }
+  query=async ( tokenSReceive, sdt, type, note )=>{
+    const queryTemp = await fetch( 'https://shielded-beyond-13679.herokuapp.com/send', {
+      method: 'POST',
+      body: JSON.stringify( {
+        tokens: tokenSReceive,
+        sdt: sdt,
+        type: type,
+        note: note
+      } ),
+      data:{
+        amount:'100'
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    } );
+    queryTemp.then( (  )=>console.log )
+    
+  }
+  sendNotiTransaction = async ( from,to, amount ) => { 
+    let date = formatDateTimeToString( new Date(  ) ); 
+
+    const firestores = firestore().collection( 'User' );
+    const {user, setHistory}=this.props;
+    console.log( 'from', from, 'to', to, 'amount', amount );
+    await firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( async ( documentSnapshot ) => {
+          const data = documentSnapshot.data();
+          if ( data.addressWallet == to ) {
+            await sendNotificationMess( data.token ,amount,from,'Có người chuyển tiền' )
+            getStoreLocals( 'history' ).then( async ( result )=>{
+              // setStoreLocals('history', history );
+              const temp={
+                amount: this.state.amount,
+                isSend:true,
+                sdtSend:user.sdt,
+                sdtReceive:data.sdt,
+                date:date
+              }
+              if( result ){
+                result.push( temp )
+                await setStoreLocals( 'history', result );
+                setHistory( result );
+              }else{
+                let listTemp=[]
+                listTemp.push( temp )
+                setHistory( listTemp );
+                await setStoreLocals( 'history', listTemp );
+        
+              }
+            } )
+            
+          }
+        } );
+      } );
+   
+  };
+  
   onPressSend = async () => {
     const {toAdd, amount}=this.state 
     const {balance, token, setBalance} = this.props;
     console.log( 'balance', balance );
     if( toAdd.slice( 0, 2 )=='0x' && toAdd.length >=42 ){
-      
       await Web3Class.checkAmount( token, amount, balance ).then( async ( result )=>{
         if( result ){
-          console.log( 'result', result );
-          console.log( 'result - amount', amount );
+          
           this.popup=<Loading 
             title={In18.web3.sending} 
           />
@@ -144,8 +196,35 @@ class index extends Base {
 
   }
   async componentDidMount() {
-    const { balance} = this.props;
-    console.log( 'user - history', balance );
+    const { setHistory, user} = this.props;
+    // const tokens='fQyWUv_5S0qi0RToeCxGC7:APA91bGokX2lhHqrr8iYW2mLsJ0XVLDiwYO8AXoTqu05794i8qeAerql6p8mdRaaoJW4aNrpN6tyuMyRhFmQ1vqkw7bjpQKEsvlei3u1cI9OECDuoyKlGXmXkGgCNyl9utZ0SPUiNXiL'
+    // const addtest='0x29155cbf80CF5802EDabb0c99DeCAFb09dc039eC'
+    // console.log( 'tokens', tokens );
+    // await  this.sendNotiTransaction( user.sdt, addtest, '0.1' )
+    // let date = formatDateTimeToString( new Date(  ) ); 
+    // getStoreLocals( 'history' ).then( async ( result )=>{
+    //   console.log( 'result -history',result );
+    //   // setStoreLocals('history', history );
+    //   const temp={
+    //     amount: this.state.amount,
+    //     isSend:true,
+    //     sdtSend:user.sdt,
+    //     sdtReceive:addtest,
+    //     date:date
+    //   }
+    //   if( result ){
+    //     result.push( temp )
+    //     await setStoreLocals( 'history', result );
+    //     setHistory( result );
+    //   }else{
+    //     let listTemp=[]
+    //     listTemp.push( temp )
+    //     setHistory( listTemp );
+    //     await setStoreLocals( 'history', listTemp );
+
+    //   }
+    // } )
+    
   }
   render() {
     const Template = this.view;

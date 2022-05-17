@@ -291,7 +291,6 @@ export const getListWorkerNearLimit = ( list ) => {
         }
       }
       if ( list[i].distance < 20 ) {
-        console.log( 'list[i].distance ', list[i].distance );
         listFinal.push( list[i] );
       }
     }
@@ -481,6 +480,9 @@ export const sendNotificationMess = async ( tokenSReceive, type = '0', sdt = '03
   if ( type === '4' ) {
     note = 'Khách hủy lên lịch bảo trì';
   }
+  if ( type === '5' ) {
+    note = 'Bạn nhận được tiền ';
+  }
   await fetch( 'https://shielded-beyond-13679.herokuapp.com/send', {
     method: 'POST',
     body: JSON.stringify( {
@@ -488,6 +490,22 @@ export const sendNotificationMess = async ( tokenSReceive, type = '0', sdt = '03
       sdt: sdt,
       type: type,
       note: note
+    } ),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+  } );
+};
+
+export const sendNotiTransaction = async ( from,to, amount,tokenSReceive,callback ) => { 
+  await fetch( 'https://shielded-beyond-13679.herokuapp.com/send', {
+    method: 'POST',
+    body: JSON.stringify( {
+      tokens: tokenSReceive,
+      sdt: from,
+      type: 5,
+      note: amount
     } ),
     headers: {
       'Content-Type': 'application/json'

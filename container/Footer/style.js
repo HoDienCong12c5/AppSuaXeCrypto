@@ -12,7 +12,7 @@ const styles = StyleSheet.create( {
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderColor: 'red',
-    borderWidth: 1
+    borderTopWidth: 1
     // position:'absolute',
   },
   footerItem: {

@@ -7,6 +7,8 @@ import Colors from '../../common/Colors';
 const styles = StyleSheet.create( {
   container:{
     // marginTop:20
+    flex: 1,
+    width: width( 90 )
   },
   containerSupport:{
     flexDirection:'row',

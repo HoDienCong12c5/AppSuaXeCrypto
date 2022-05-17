@@ -26,7 +26,6 @@ class InfoWorker extends Base {
   }
 
   componentDidMount() {
-
   }
 
   onChangeAddress=( tex ) => {

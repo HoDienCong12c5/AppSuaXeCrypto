@@ -3,26 +3,31 @@ import React from 'react'
 import In18 from 'common/constants'
 import Colors from 'common/Colors'
 export default function index( props ) {
-  const {item, addUser, token, index}=props
-  const isUser=addUser===item.to
+  const {isUser, item, token}=props 
+  console.log( 'item',item, token, isUser );
+  console.log( 'item', isUser );
   // const fromTo = item.to
   return (
     <View style={[styles.container,{backgroundColor:index%2==0?Colors.GRAY6:''}]}>
-      <View style={styles.first}>
-        <Text style={[styles`${isUser?`send`:`receive`}`]}>
-          {isUser?'Chuyển tiền':'Gửi tiền'}
-        </Text>
-        <Text style={styles.date}>
-          {item.date}
-        </Text>
+      <View style={[styles.first]}>
+        <View>
+          <Text style={[styles[`${isUser?`send`:`receive`}`]]}>
+            {isUser?'Chuyển tiền':'Nhận tiền'}
+          </Text>
+          <Text style={[styles[`${isUser?`sendAmount`:`receiveAmount`}`]]}>
+           Số lượng: {item?.amount}
+          </Text>
+        </View>
+        
       </View>
       <View style={styles.second}>
         <Text style={styles.fromTo} >
-          {isUser?'Địa':' tiền'}
+          {item?.date}
         </Text>
-        <Text style={[styles.amount,{color:isUser?'red':'green'}]}>
-          {item.amount} {token}
+        <Text style={styles.fromTo} >
+          {isUser? 'Người gửi'+item?.sdtReceive :'Người gửi'+ item?.sdtSend}
         </Text>
+         
       </View>
     </View>
   )
@@ -35,21 +40,30 @@ const styles = StyleSheet.create( {
     justifyContent:'space-between'
   },
   first:{
-    flexDirection:'row',
-    justifyContent:'space-between'
+    // flexDirection:'row',
+    // justifyContent:'space-between'
   },
   second:{
-    flexDirection:'row',
-    justifyContent:'space-between'
   },
   send:{
     color:'red',
-    fontSize:16,
+    fontSize:15,
     fontWeight:'bold'
   },
-  receive:{
-    color:'green'
+  sendAmount:{
+    color:'red',
+    fontSize:13
   },
+  receive:{
+    color:'green',
+    fontSize:15,
+    fontWeight:'bold'
+  },
+  receiveAmount:{
+    color:'green',
+    fontSize:13
+  },
+  
   date:{
     fontSize:12,
     color:Colors.GRAY6
