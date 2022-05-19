@@ -29,15 +29,28 @@ const PriceStart=[
   100,
   30,
   300,
-  50
+  50,
+  50,
+  50,
+  80,
+  50,
+  500,
+  100
 ]
 const PriceEnd=[
-  1000,
-  100,
-  500,
-  100,
-  2000,
-  200
+  '1 triệu',
+  '100 ngàn',
+  '500 ngàn',
+  '100 ngàn',
+  '2 triệu',
+  ' 200 ngàn',
+  '200 ngàn',
+  '200 ngàn',
+  '200 ngàn',
+  '250 ngàn',
+  '2 Triệu',
+  '3 Triệu'
+
 ]
 export default {
   Problem,

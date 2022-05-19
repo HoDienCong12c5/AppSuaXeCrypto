@@ -13,7 +13,7 @@ import Loading from 'components/Loading'
 import Img from 'assets/index'; 
 import Web3Class from 'modals/ManagerWeb3/index'
 import {formatDateTimeToString } from 'modals/function';
-
+import ModalBase  from 'components/ModalBase'
 import firestore from '@react-native-firebase/firestore';
 import { isBuffer } from '@walletconnect/utils';
 //class component
@@ -153,8 +153,7 @@ class index extends Base {
       } );
    
   };
-  
-  onPressSend = async () => {
+  onSubmit = async () => {
     const {toAdd, amount}=this.state 
     const {balance, token, setBalance} = this.props;
     console.log( 'balance', balance );
@@ -189,7 +188,22 @@ class index extends Base {
     }else{
       Alert.alert( 'Chưa đúng định dạng' )
     }
-   
+  }
+  onPressSend = async () => {
+    const {toAdd, amount}=this.state 
+    Alert.alert(
+      "Cảnh báo",
+      `Bạn có chắc là gửi ${amount}`,
+      [
+        {
+          text: "Thoát",
+          onPress: () => console.log( "Cancel Pressed" ),
+          style: "cancel"
+        },
+        { text: "Có", onPress: () => this.onSubmit() }
+      ]
+    );
+
   }
   onPressBack=()=>{
     // console.log( 'onPressB/ack' ); 
