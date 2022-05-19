@@ -236,7 +236,10 @@ class Home extends Base {
     setMenuFooter( In18.Menu.SEARCH );
     Actions.search();
   }
-
+  onChatBox=()=>{
+    console.log( 'dã vào' );
+    Actions.chatBox()
+  }
   render() {
     const Template = this.view;
     return (

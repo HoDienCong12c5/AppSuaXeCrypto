@@ -24,8 +24,8 @@ export default function index( props ) {
         <Text style={styles.fromTo} >
           {item?.date}
         </Text>
-        <Text style={styles.fromTo} >
-          {isUser? 'Người gửi'+item?.sdtReceive :'Người gửi'+ item?.sdtSend}
+        <Text style={[styles[`${isUser?`sendAmount`:`receiveAmount`}`]]}>
+          {isUser? 'Đi :'+item?.sdtReceive :'Từ : '+ item?.sdtSend}
         </Text>
          
       </View>

@@ -57,17 +57,14 @@ class Regitster extends Base {
 
   onSubmitRegister = async () => {
     const { otp, confirm } = this.state;
+    console.log( 'otp', otp );
+    console.log( 'confirm', confirm );
     this.closeModal();
     try {
-      await confirm.confirm( otp ).then( ( ) => {
-        // this.setState( { userId: user.uid } );
-        alert( 'Đăng ký thành công' );
-        this.successConfirmOTP();
-      } )
-        .catch( ( ) => {
-          alert( 'Nhập sai ma otp' );
-          this.setState( { otp: 0 } );
-        } );
+      await confirm.confirm( otp )
+      // this.setState( { userId: user.uid } );
+      alert( 'Đăng ký thành công' );
+      this.successConfirmOTP();
     } catch ( error ) {
       alert( 'Nhập sai ma otp' );
       this.setState( { otp: 0 } );

@@ -185,13 +185,15 @@ const styles = StyleSheet.create( {
     backgroundColor:Colors.ORANGE2,
     borderRadius:10
   },
-  messageBot:{
-    position:'absolute',
+  messageBot:{ 
     height:height( 8 ),
-    width:height( 8 ),
-    top:height( -10 ),
+    width:height( 8 ) 
+    
+  },
+  iconMessBox:{
+    position:'absolute',
+    top:height( 75 ),
     right:0
-
   }
 } );
 export default styles;

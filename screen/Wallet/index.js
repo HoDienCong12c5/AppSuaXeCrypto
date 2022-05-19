@@ -31,7 +31,7 @@ class wallet extends Base {
 
   async componentDidMount() {
     const {user, setBalance, token, history} = this.props;
-    console.log( 'history', history );
+    console.log( 'history', history, 'token', token );
     this.setState( {
       walletUser : user.addressWallet 
     } )

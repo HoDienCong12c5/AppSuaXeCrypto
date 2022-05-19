@@ -16,7 +16,8 @@ const page = ( p ) => {
   const { listQuality, listAll } = p.state;
   const {
     onPressViewWorkerSort,
-    onPressViewList
+    onPressViewList,
+    onChatBox
 
   } = p.func;
   const renderQuality = ( { item } ) => (
@@ -140,9 +141,9 @@ const page = ( p ) => {
         </FlatList>
       </View>
       {/* </ScrollView> */}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>onChatBox()} style={styles.iconMessBox}>
         <Image source={Img.Image.iconMessageBot} style={styles.messageBot} />
-        
+
       </TouchableOpacity>
     </View>
 
