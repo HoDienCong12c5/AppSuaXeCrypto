@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
+import groovy.swing.SwingBuilder
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -90,7 +91,7 @@ apply from: "../../node_modules/react-native/react.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = true
+def enableSeparateBuildPerCPUArchitecture = false
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
@@ -145,7 +146,7 @@ android {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
-            universalApk true  // If true, also generate a universal APK
+            universalApk false  // If true, also generate a universal APK
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
@@ -157,6 +158,10 @@ android {
                 keyAlias MYAPP_UPLOAD_KEY_ALIAS
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
+            storeFile file('your_key_name.keystore')
+          //  storePassword System.console().readLine("\nKeystore password:")
+          //   keyAlias System.console().readLine("\nAlias: ")
+          //  keyPassword System.console().readLine("\nAlias password: ")
         }
         debug {
             storeFile file('debug.keystore')
@@ -234,8 +239,6 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation project(path: ':@react-native-firebase_auth')
-    implementation project(path: ':@react-native-community_async-storage')
-    implementation project(path: ':@react-native-community_async-storage')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

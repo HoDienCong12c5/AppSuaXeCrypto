@@ -12,5 +12,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "cSpell.words": ["Luot"] // Khi nào đổi focus thì tự save
+  "cSpell.words": [
+    "Luot"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic" // Khi nào đổi focus thì tự save
 }
