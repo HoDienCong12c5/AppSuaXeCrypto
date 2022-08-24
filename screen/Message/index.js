@@ -3,13 +3,13 @@ import {
   TextInput,
   ScrollView
 } from 'react-native';
-import Emptydata from 'container/Loading/index';
+import Emptydata from 'container/Loading';
 import React, { useState, useEffect } from 'react';
 import database from '@react-native-firebase/database';
 import In18 from 'common/constants';
-import { formatStringToDateTime, sendNotificationMess } from 'modals/function';
-import Image from 'components/Image';
-import Img from 'assets/index';
+import { formatStringToDateTime, sendNotificationMess } from 'modals/functions';
+import Image from 'components/Images';
+import Img from 'assets';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import firestore from '@react-native-firebase/firestore';

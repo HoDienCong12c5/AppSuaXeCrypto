@@ -1,4 +1,4 @@
-import { checkStore, setStoreLocals } from 'modals/function';
+import { checkStore, setStoreLocals } from 'modals/functions';
 import { MENU, KEY_PAGE } from 'common/constants';
 
 export default class StorageReduxAction {

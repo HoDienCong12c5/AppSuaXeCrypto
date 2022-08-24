@@ -2,13 +2,13 @@ import {
   View, Text, StyleSheet, TouchableOpacity
 } from 'react-native';
 import React, { useState } from 'react';
-import Image from 'components/Image/index';
+import Image from 'components/Images';
 import In18 from 'common/constants';
-import Button from 'components/Button';
-import Img from 'assets/index';
+import Button from 'components/Buttons';
+import Img from 'assets';
 import { height, width } from 'common/styles';
 import DatePicker from 'react-native-date-picker';
-import { formatDateTimeToString } from 'modals/function';
+import { formatDateTimeToString } from 'modals/functions';
 
 export default function index( props ) {
   const {

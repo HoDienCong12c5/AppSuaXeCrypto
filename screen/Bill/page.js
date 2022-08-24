@@ -1,12 +1,7 @@
 import {
-  View, Text, ScrollView, FlatList
+  View, FlatList
 } from 'react-native';
-import React, { useState } from 'react';
-import { height, width, Colors } from 'common/styles';
-import Image from 'components/Image';
-import Img from 'assets/index';
-import In18 from 'common/constants';
-import Button from 'components/Button';
+import React from 'react';
 import styles from './styles';
 import Items from './Items';
 

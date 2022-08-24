@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import In18 from 'common/constants';
-import Image from 'components/Image';
-import Img from 'assets/index';
-import { formatStringToDateTime } from 'modals/function';
+import Image from 'components/Images';
+import Img from 'assets';
+import { formatStringToDateTime } from 'modals/functions';
 import styles from './styles';
 
 export default function index( props ) {

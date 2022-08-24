@@ -10,9 +10,9 @@ import {
   getLisBill, compareDate, sendNotificationMess, updateBill,
   formatDateTimeToString,
   updateBillDateEnd
-} from 'modals/function';
+} from 'modals/functions';
 import ActionStore from 'reduxs/Action/ActionStore';
-import Modal from 'components/ModalBase/index';
+import Modal from 'components/ModalBase';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';

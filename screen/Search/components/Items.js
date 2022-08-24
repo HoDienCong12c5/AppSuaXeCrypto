@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Image from 'components/Image';
-import Img from 'assets/index';
+import Image from 'components/Images';
+import Img from 'assets';
 import In18 from 'common/constants';
 import styles from './styles';
 

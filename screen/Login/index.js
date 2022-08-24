@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import {
   setStoreLocal, setStoreLocals, getStoreLocals, updateToken
-} from 'modals/function';
+} from 'modals/functions';
 import ActionStore from 'reduxs/Action/ActionStore';
 import messaging from '@react-native-firebase/messaging';
 import Base from '../../container/BaseContainer';

@@ -3,11 +3,11 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { height, width, Colors } from 'common/styles';
-import Image from 'components/Image';
-import Img from 'assets/index';
+import Image from 'components/Images';
+import Img from 'assets';
 import In18 from 'common/constants';
-import Button from 'components/Button';
-import Emptydata from 'container/Loading/index';
+import Button from 'components/Buttons';
+import Emptydata from 'container/Loading';
 import styles from './styles';
 import Items from './Items';
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, Alert , TouchableOpacity} from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux'; 
 import styles from './styles';
-import Image from 'components/Image/index';
-import Button from 'components/Button';
+import Image from 'components/Images';
+import Button from 'components/Buttons';
 import TextInput from 'components/TextInput';
-import Img from 'assets/index';
+import Img from 'assets';
 import In18 from 'common/constants';
 import QRScan from './QRScan';
 export default function page( p ) {

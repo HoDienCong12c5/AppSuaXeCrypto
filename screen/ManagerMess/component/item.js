@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import Image from 'components/Image';
-import Img from 'assets/index';
+import Image from 'components/Images';
+import Img from 'assets';
 import CheckBox from '@react-native-community/checkbox';
 import In18 from 'common/constants';
 import styles from './style';

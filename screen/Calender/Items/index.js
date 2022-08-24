@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import In18 from 'common/constants';
-import Image from 'components/Image/index';
-import Img from 'assets/index';
-import Colors from 'common/Colors';
+import Image from 'components/Images';
+import Img from 'assets';
+import {Colors} from 'common/Colors';
 import { height, width } from 'common/styles';
 
 import styles from './styles';

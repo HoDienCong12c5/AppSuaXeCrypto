@@ -4,9 +4,9 @@ import MapView, {
   Marker, PROVIDER_GOOGLE
 } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-import Img from 'assets/index';
-import Image from 'components/Image/index';
-import Colors from 'common/Colors';
+import Img from 'assets';
+import Image from 'components/Images';
+import {Colors} from 'common/Colors';
 import styles from './styles';
 
 export default function index( props ) {

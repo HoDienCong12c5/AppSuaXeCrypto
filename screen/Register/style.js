@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { height, width } from 'common/styles';
-import Colors from '../../common/Colors';
+import {Colors} from '../../common/Colors';
 
 const styles = StyleSheet.create( {
   containerView: {

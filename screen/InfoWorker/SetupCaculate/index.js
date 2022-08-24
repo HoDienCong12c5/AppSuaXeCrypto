@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import Button from 'components/Button';
+import Button from 'components/Buttons';
 import CheckBox from '@react-native-community/checkbox';
 import DatePicker from 'react-native-date-picker';
-import { formatDateTimeToString } from 'modals/function';
+import { formatDateTimeToString } from 'modals/functions';
 import TextInputs from 'components/TextInput';
 import { height, width } from 'common/styles';
-import Img from 'assets/index';
-import Image from 'components/Image';
+import Img from 'assets';
+import Image from 'components/Images';
 import { TextInput } from 'react-native-paper';
-import Colors from 'common/Colors';
+import {Colors} from 'common/Colors';
 import styles from './style';
 
 export default function SetupCaculate( props ) {

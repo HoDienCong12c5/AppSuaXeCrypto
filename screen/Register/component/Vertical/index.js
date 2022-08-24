@@ -2,7 +2,7 @@ import { View, Text, useState } from 'react-native';
 import React from 'react';
 import { height, width } from 'common/styles';
 import TextInputs from 'components/TextInput';
-import Button from 'components/Button';
+import Button from 'components/Buttons';
 import In18 from 'common/constants';
 import styles from './styles';
 

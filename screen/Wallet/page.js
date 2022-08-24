@@ -6,15 +6,15 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
  
 import In18 from 'common/constants';
-import TextInput from 'components/TextInput/index';
+import TextInput from 'components/TextInput';
 import { height, width } from 'common/styles';
 import styles from './style';
-import Img from 'assets/index';
-import Button from 'components/Button/index';
+import Img from 'assets';
+import Button from 'components/Buttons';
 import QRCode from 'react-native-qrcode-svg';
-import Image from 'components/Image/index';  
+import Image from 'components/Images';  
 import History  from './History'
-import Emptydata from 'container/Loading/index';
+import Emptydata from 'container/Loading';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'; 
 const page = ( p ) => {
   const {

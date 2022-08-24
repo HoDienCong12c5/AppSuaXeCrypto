@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Dimensions, Text, Platform, PixelRatio, StatusBar,
+  Dimensions, Text, Platform, PixelRatio, StatusBar
 } from 'react-native';
 
 const MYWIDTH = Dimensions.get( 'window' ).width;
@@ -26,5 +26,6 @@ export const Colors = {
   GREEN1: '#219653',
   YELLOW: '#F99D26',
   RED: '#E61A27',
-  RED1: '#ED1C24',
+  RED1: '#ED1C24'
 };
+export default ()=>{}

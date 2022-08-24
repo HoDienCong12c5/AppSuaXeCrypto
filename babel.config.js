@@ -8,7 +8,7 @@ module.exports = {
         extensions: ['.js', '.ios.js', '.android.js'],
         alias: {
           common: './common',
-          controller: '.controller',
+          controller: './controller',
           assets: './assets',
           frontend: '.Frontend',
           modals: './modals',

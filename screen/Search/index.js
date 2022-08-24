@@ -4,7 +4,7 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import { connect } from 'react-redux';
-import { getListWorkerNear } from 'modals/function';
+import { getListWorkerNear } from 'modals/functions';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';

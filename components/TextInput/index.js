@@ -3,7 +3,7 @@ import {
   View, TextInput, StyleSheet, Text,
   Dimensions, Platform, PixelRatio, Image
 } from 'react-native';
-import image from 'assets/index';
+import image from 'assets';
 import In18 from '../../common/constants';
 
 const MYWIDTH = Dimensions.get( 'window' ).width;

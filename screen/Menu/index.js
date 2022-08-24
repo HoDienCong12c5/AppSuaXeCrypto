@@ -10,7 +10,7 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
-import { setStoreLocal, getStoreLocal, SaveProfile } from 'modals/function';
+import { setStoreLocal, getStoreLocal, SaveProfile } from 'modals/functions';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Geolocation from 'react-native-geolocation-service';
 import Base from '../../container/BaseContainer';

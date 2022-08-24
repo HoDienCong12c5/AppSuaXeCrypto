@@ -9,13 +9,10 @@ import {
 import { Router, Actions, Scene } from 'react-native-router-flux';
 // import Modal from 'react-native-modal';
 import { IconButton } from 'react-native-paper';
-import TextInput from 'components/TextInput/index';
-
-import { height, width } from 'common/styles';
 import styles from './style';
-import Img from '../../assets/index';
+import Img from '../../assets';
 import In18 from '../../common/constants';
-import Buttons from '../../components/Button/index';
+import Buttons from '../../components/Buttons';
 
 const page = ( p ) => {
   const {

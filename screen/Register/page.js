@@ -5,11 +5,11 @@ import {
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
 import In18 from 'common/constants';
-import TextInput from 'components/TextInput/index';
-import Img from 'assets/index';
-import Image from 'components/Image/index';
+import TextInput from 'components/TextInput';
+import Img from 'assets';
+import Image from 'components/Images';
 import styles from './style';
-import Button from '../../components/Button/index'; 
+import Button from '../../components/Buttons'; 
 
 const page = ( p ) => {
   const {

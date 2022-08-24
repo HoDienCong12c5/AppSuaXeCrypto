@@ -8,9 +8,6 @@ import {
 import {
   ModalPortal, Modal, ModalContent, ModalTitle
 } from 'react-native-modals';
-import Image from 'components/Image/index';
-import Img from 'assets/index';
-
 import Header from './Header/Header';
 import styles from './style';
 import Footer from './Footer/Footer';

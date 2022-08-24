@@ -4,7 +4,7 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import database from '@react-native-firebase/database';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getAllListWorker, getListWorkerQuality } from 'modals/function';
+import { getAllListWorker, getListWorkerQuality } from 'modals/functions';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Page from './page';
 import In18 from '../../common/constants';

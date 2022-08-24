@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register } from 'modals/function';
+import { Register } from 'modals/functions';
 import messaging from '@react-native-firebase/messaging';
 import Geolocation from 'react-native-geolocation-service';
 import { bindActionCreators } from 'redux';
@@ -11,7 +11,7 @@ import auth from '@react-native-firebase/auth';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import Modal from './component/Vertical/index';
+import Modal from './component/Vertical';
 // import firestore from '@react-native-firebase/firestore';
 class Regitster extends Base {
   constructor( props ) {

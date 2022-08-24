@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Button from 'components/Button/index';
-import TextInput from 'components/TextInput/index';
+import Button from 'components/Buttons';
+import TextInput from 'components/TextInput';
 import In18 from 'common/constants';
 import styles from './styles';
 

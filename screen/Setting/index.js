@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Register, getLisBill,getStoreLocals, setStoreLocals } from 'modals/function';
+import { Register, getLisBill,getStoreLocals, setStoreLocals } from 'modals/functions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';

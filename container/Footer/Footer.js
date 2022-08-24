@@ -7,7 +7,7 @@ import {
 import { Router, Actions, ActionConst } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Img from '../../assets/index';
+import Img from '../../assets';
 import styles from './style';
 import In18 from '../../common/constants';
 import { EventRegister } from 'react-native-event-listeners'

@@ -662,3 +662,4 @@ export const PlayMusic = async ( name, time = 99999 ) => {
 
 
 // web3.eth.accounts.privateKeyToAccount
+export default ()=>{}

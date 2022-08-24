@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import {
   setLocationUser, getAllListWorker, getListWorkerQuality, getListWorkerNearLimit,
   PlayMusic, setStoreLocals, getStoreLocals, setHistory, formatDateTimeToString
-} from 'modals/function';
+} from 'modals/functions';
 import { PermissionsAndroid, Platform } from 'react-native';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Geolocation from 'react-native-geolocation-service';

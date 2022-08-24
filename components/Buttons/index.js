@@ -3,9 +3,9 @@ import {
   View, TouchableOpacity, StyleSheet, Text
 } from 'react-native';
 import { height } from 'common/styles';
-import Image from 'components/Image';
+import Image from 'components/Images';
 
-const Button = ( props ) => {
+const Buttons = ( props ) => {
   const {
     style, 
     title, 
@@ -71,4 +71,4 @@ const styles = StyleSheet.create( {
     textAlign: 'center'
   }
 } );
-export default Button;
+export default Buttons;

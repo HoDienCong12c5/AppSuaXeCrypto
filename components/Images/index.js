@@ -30,5 +30,4 @@ const styles = StyleSheet.create( {
     height: width( 10 )
   }
 } );
-// eslint-disable-next-line no-undef
 export default Images;

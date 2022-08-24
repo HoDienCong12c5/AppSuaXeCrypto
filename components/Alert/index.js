@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { height, width } from 'common/styles';
-import Image from 'components/Image';
-import Img from 'assets/index';
-import Button from 'components/Button';
-import Colors from 'common/Colors';
+import Image from 'components/Images';
+import Img from 'assets';
+import Button from 'components/Buttons';
+import {Colors} from 'common/Colors';
 
 export default function index( props ) {
   const {

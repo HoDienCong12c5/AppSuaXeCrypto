@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Base from 'container/BaseContainer';
 import { bindActionCreators } from 'redux';
-import { SaveProfile } from 'modals/function';
+import { SaveProfile } from 'modals/functions';
 import In18 from '../../common/constants';
 import Page from './page';
 import PopupEdit from './componets/popupEdit';

@@ -3,7 +3,7 @@ import {
   View, TouchableOpacity, Image, Text
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import Img from '../../assets/index';
+import Img from '../../assets';
 import styles from './style';
 
 const Header = ( props ) => {

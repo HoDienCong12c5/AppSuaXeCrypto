@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import In18 from 'common/constants'
-import Colors from 'common/Colors'
+import {Colors} from 'common/Colors'
 export default function index( props ) {
   const {isUser, item, token}=props 
   console.log( 'item',item, token, isUser );

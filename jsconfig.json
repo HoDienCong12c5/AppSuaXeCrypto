@@ -5,7 +5,7 @@
     "baseUrl": ".",
     "paths": {
       "common/*": [
-        "common/*"
+        "./common/*"
       ],
       "components/*": [
         "./components/*"

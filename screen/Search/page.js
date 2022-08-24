@@ -4,14 +4,14 @@ import {
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Geolocation from 'react-native-geolocation-service';
-import TextInput from 'components/TextInput/index';
+import TextInput from 'components/TextInput';
 import MapView, { Marker, PROVIDER_GOOGLE, Callout } from 'react-native-maps';
-import Img from 'assets/index';
-import Image from 'components/Image/index';
-import Colors from 'common/Colors';
+import Img from 'assets';
+import Image from 'components/Images';
+import {Colors} from 'common/Colors';
 import styles from './style';
 import In18 from '../../common/constants';
-import Button from '../../components/Button/index';
+import Button from '../../components/Buttons';
 import Items from './components/Items';
 
 const page = ( p ) => {

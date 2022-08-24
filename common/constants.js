@@ -22,8 +22,7 @@ export const KEY_PAGE = {
   BALANCE:'BALANCE',
   RPC:'RPC'
 };
-
-export default Title = {
+const Title = {
   User: {
     password: 'Mật khẩu',
     numberPhone: 'Số điện thoại',
@@ -210,4 +209,6 @@ export const APP_ENVIRONMENT = {
   MAINNET: 'MAINNET',
   TESTNET: 'TESTNET'
 };
+
+export default Title
 

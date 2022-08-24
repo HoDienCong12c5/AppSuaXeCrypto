@@ -1,11 +1,11 @@
 import { View, ActivityIndicator, Text } from 'react-native';
 import React, { useState } from 'react';
-import Images from 'components/Image';
-import Img from 'assets/index';
-import Colors from 'common/Colors';
+import Images from 'components/Images';
+import Img from 'assets';
+import {Colors} from 'common/Colors';
 import styles from './style';
 
-const index = ( props ) => {
+const Loading = ( props ) => {
   const { isOnDown = false, icon , isFinish=false, isWatting=false} = props;
   const [isStop, setisStop] = useState( false );
   const isStopLoading = () => {
@@ -46,4 +46,4 @@ const index = ( props ) => {
     </View>
   );
 };
-export default index;
+export default Loading;

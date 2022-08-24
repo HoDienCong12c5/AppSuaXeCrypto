@@ -4,12 +4,12 @@ import {
 } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import Emptydata from 'container/Loading/index';
+import Emptydata from 'container/Loading';
 import styles from './style';
-import Img from '../../assets/index';
+import Img from '../../assets';
 import In18 from '../../common/constants';
 import OptionFunctions from './components/optionFunction';
-import Images from 'components/Image/index'
+import Images from 'components/Images'
 import { height } from 'common/styles';
 
 const page = ( p ) => {

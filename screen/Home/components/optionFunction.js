@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import {
   View, TouchableOpacity, Text, styleSheet, FlatList
 } from 'react-native';
-import Image from 'components/Image/index';
+import Image from 'components/Images';
 import styles from './style';
 
 const OptionFunctions = ( props ) => {

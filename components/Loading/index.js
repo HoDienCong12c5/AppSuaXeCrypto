@@ -1,6 +1,6 @@
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import React from 'react'
-import Colors from 'common/Colors'
+import {Colors} from 'common/Colors'
 export default function index( props ) {
   const {title, description}=props
   return (

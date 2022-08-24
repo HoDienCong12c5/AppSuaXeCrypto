@@ -11,9 +11,9 @@ import {
 } from 'react-native-modals';
 import {
   PlayMusic, getStoreLocal
-} from 'modals/function';
+} from 'modals/functions';
 import scenes from './common/router';
-import rootReducer from './reduxs/Reducer/index';
+import rootReducer from './reduxs/Reducer';
 
 const store = createStore( rootReducer );
 

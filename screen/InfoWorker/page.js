@@ -2,9 +2,9 @@ import React from 'react';
 import {
   View, TouchableOpacity, Image, TextInput, ScrollView, Text
 } from 'react-native';
-import Img from 'assets/index';
+import Img from 'assets';
 import In18 from 'common/constants';
-import Buttons from 'components/Button/index';
+import Buttons from 'components/Buttons';
 import styles from './style';
 
 const page = ( p ) => {

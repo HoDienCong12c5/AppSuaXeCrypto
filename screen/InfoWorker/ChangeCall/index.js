@@ -3,10 +3,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import { height, width } from 'common/styles';
-import Colors from 'common/Colors';
-import Img from 'assets/index';
-import Image from 'components/Image/index';
-import Button from 'components/Button/index';
+import {Colors} from 'common/Colors';
+import Img from 'assets';
+import Image from 'components/Images';
+import Button from 'components/Buttons';
 import In18n from 'common/constants';
 
 const ChangOptionCall = ( props ) => {

@@ -3,7 +3,7 @@ import React from 'react';
 import { sendTransaction } from 'modals/ETH/test'; 
 // import WalletManager from 'modals/ETH/hocHoi';
 import Web3ServicesEther from 'modals/ETH/setupETH'; 
-import ClassETH from 'modals/ETH/Web3/index'; 
+import ClassETH from 'modals/ETH/Web3'; 
 
 const toAdd = '0x5270b3da7df9b03ba997d065575bb77ffdd3f39a';
 

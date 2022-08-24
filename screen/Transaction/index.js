@@ -1,6 +1,6 @@
 import { View, Text, Alert , TouchableOpacity} from 'react-native'
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { setStoreLocals, getStoreLocals, sendNotificationMess } from 'modals/function';
+import { setStoreLocals, getStoreLocals, sendNotificationMess } from 'modals/functions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
@@ -10,9 +10,9 @@ import Page from './page'
 import React from 'react';
 import TOMO from 'modals/TOMO/web3';
 import Loading from 'components/Loading'
-import Img from 'assets/index'; 
-import Web3Class from 'modals/ManagerWeb3/index'
-import {formatDateTimeToString } from 'modals/function';
+import Img from 'assets'; 
+import Web3Class from 'modals/ManagerWeb3'
+import {formatDateTimeToString } from 'modals/functions';
 import ModalBase  from 'components/ModalBase'
 import firestore from '@react-native-firebase/firestore';
 import { isBuffer } from '@walletconnect/utils';

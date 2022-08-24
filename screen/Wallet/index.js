@@ -1,16 +1,16 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import { SaveProfile, setStoreLocals, getStoreLocals } from 'modals/function';
+import { SaveProfile, setStoreLocals, getStoreLocals } from 'modals/functions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page'; 
-import ClassWeb3 from 'modals/ManagerWeb3/index';
+import ClassWeb3 from 'modals/ManagerWeb3';
 import QRFull from './QRFull';
-import ModalBase from 'components/ModalBase/index';
+import ModalBase from 'components/ModalBase';
 import { token } from 'reudxs/Reducer/Reducer';
 import Loading from 'components/Loading'
 import store from 'react-native-simple-store';

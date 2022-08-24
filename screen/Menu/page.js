@@ -2,15 +2,15 @@ import React from 'react';
 import {
   View, StyleSheet, Image, Text, ScrollView, Alert
 } from 'react-native';
-import Button from 'components/Button/index';
+import Button from 'components/Buttons';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import { push } from 'react-native-simple-store';
 import database from '@react-native-firebase/database';
 import { width } from 'common/styles';
 import messaging from '@react-native-firebase/messaging';
 
-import Img from 'assets/index';
-import TextInput from 'components/TextInput/index';
+import Img from 'assets';
+import TextInput from 'components/TextInput';
 import styles from './style';
 import In18 from '../../common/constants';
 

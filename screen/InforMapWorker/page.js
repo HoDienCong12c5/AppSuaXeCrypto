@@ -3,7 +3,7 @@ import {
   View, TouchableOpacity, Image, TextInput, Text
 } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import Img from 'assets/index';
+import Img from 'assets';
 import styles from './style';
 
 const page = ( p ) => {
