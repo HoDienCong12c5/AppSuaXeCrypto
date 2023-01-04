@@ -14,7 +14,7 @@ import {
 } from 'modals/functions';
 import scenes from './common/router';
 import rootReducer from './reduxs/Reducer';
-
+import Home from 'screen/Home';
 const store = createStore( rootReducer );
 
 class App extends Component {
@@ -118,7 +118,8 @@ class App extends Component {
     // <Tex></Tex>
     //     </View>
       <Provider store={store}>
-        <Router scenes={scenes( 'home' )} />
+        {/* <Router scenes={scenes( 'home' )} /> */}
+        <Home />
         <Modal
           //  style={{ backgroundColor: 'red' }}
           modalStyle={{ padding: 0 }}
